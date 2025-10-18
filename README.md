@@ -1,2 +1,1 @@
-"# Hugo-site" 
-"# LapTrinhMang-NguyenQuocTrung" 
+# my-hugo-site
