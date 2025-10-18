@@ -28,7 +28,7 @@
     .content__right { font-size: 0.95rem; }
 
     /* Certificates images and other small text adjustments */
-    .certificate__img { max-height: 140px; }
+    .certificate__img { max-height: 400px; }
 
     /* Responsive adjustments: reduce sizes on small screens */
     @media (max-width: 1200px) {
@@ -105,7 +105,7 @@
 
 .certificate__item {
     text-align: center;
-    max-width: 200px;
+    max-width: 300px;
 }
 
 .certificate__img {
@@ -113,6 +113,12 @@
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate__img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
 .certificates-sidebar {
@@ -220,20 +226,20 @@
 
                         <div class="experience__job">
                             <div class="experience__subheader">
-                                <h3 class="experience__position">Lập trình viên Python – Dự án học thuật</h3>
-                                <h3 class="experience__date">2023</h3>
+                                <h3 class="experience__position">Thực tập sinh Phát triển Phần mềm</h3>
+                                <h3 class="experience__date">2025 - nay</h3>
                             </div>
                             <ul>
-                                <li class="experience__bullet">Phát triển ứng dụng chat client-server qua TCP socket</li>
-                                <li class="experience__bullet">Xử lý dữ liệu JSON và đa luồng</li>
-                                <li class="experience__bullet">Tạo giao diện bằng Windows Forms</li>
+                                <li class="experience__bullet">Phát triển backend cho các ứng dụng web sử dụng Java và Spring Boot</li>
+                                <li class="experience__bullet">Thiết kế và triển khai RESTful APIs</li>
+                                <li class="experience__bullet">Tích hợp cơ sở dữ liệu và xử lý dữ liệu</li>
                             </ul>
                             <div class="experience__badges">
                                 <ul>
-                                    <li class="experience__badge">Python</li>
-                                    <li class="experience__badge">Socket</li>
-                                    <li class="experience__badge">JSON</li>
-                                    <li class="experience__badge">Multithreading</li>
+                                    <li class="experience__badge">Java</li>
+                                    <li class="experience__badge">Spring Boot</li>
+                                    <li class="experience__badge">REST API</li>
+                                    <li class="experience__badge">SQL</li>
                                 </ul>
                             </div>
                         </div>
@@ -248,7 +254,7 @@
                         <div class="experience__job">
                             <div class="experience__subheader">
                                 <h3 class="experience__position">Web Developer Intern</h3>
-                                <h3 class="experience__date">2025</h3>
+                                <h3 class="experience__date">2026</h3>
                             </div>
                             <ul>
                                 <li class="experience__bullet">Mong muốn tham gia môi trường doanh nghiệp để học hỏi quy trình Agile</li>
@@ -292,7 +298,7 @@
             <div class="section__content">
                 <div class="certificates">
                     <div class="certificate__item">
-                        <img src="img/Nguyễn Quốc Trung HTML & CSS Certificate.png" alt="Chứng chỉ Lập trình Web (F8)" class="certificate__img">
+                        <img src="img/HTML&CSSCertificate.png" alt="Chứng chỉ Lập trình Web (F8)" class="certificate__img">
                         <p>Chứng chỉ Lập trình Web (F8)</p>
                     </div>
                     <div class="certificate__item">
@@ -374,18 +380,16 @@
         </div>
 
         <!-- CHỨNG CHỈ -->
-       <!-- <div class="sideSection">
-            <div class="sideSection__heading"><h2 class="sideSection__title">Chứng chỉ</h2></div>
+       <div class="sideSection">
+            <div class="sideSection__heading"><h2 class="sideSection__title">Dự án</h2></div>
             <div class="sideSection__content">
                 <ul>
-                    <li>Chứng chỉ Lập trình Web (F8)</li>
-                    <li>Chứng chỉ Network Basic (Cisco)</li>
-                    <li>Chứng chỉ JavaScript Essentials 1 (Cisco)</li>
-                    <li>Chứng chỉ JavaScript Essentials 2 (Cisco)</li>
-                    <li>Dự kiến tốt nghiệp Đại học HUTECH (2026)</li>
+                    <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link" href="https://github.com/harryitc/2fa-java-gui" target="_blank">2FA TOTP Java GUI</a></span></li>
+                    <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link" href="https://github.com/KhoangrTroongs/DACS_Elegantsuits" target="_blank">Elegant Suits Web</a></span></li>
+                    
                 </ul>
             </div>
-        </div> -->
+        </div>
 
         <!-- SỞ THÍCH -->
         <div class="sideSection">
