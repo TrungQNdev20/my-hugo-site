@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 6 | Lập trình Socket UDP</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" href="/style.main.min.b8048638da11b2704c9ac4157cecae3c80b86dacaa16790b14b3a9f17eade743.css">
+</head>
+<body>
+<nav class="topnav">
+  <ul>
+    <li><a href="/index.html">Trang chủ</a></li>
+    <li><a href="/java-installation.html">Giới thiệu & Cài đặt Java</a></li>
+    <li><a href="/session2-foundation.html">Kiến thức nền tảng</a></li>
+    <li><a href="/session3-io.html">Quản lý luồng nhập/xuất</a></li>
+    <li><a href="/session4-network-address.html">Quản lý địa chỉ mạng</a></li>
+    <li><a href="/session5-tcp.html">Lập trình Sockets TCP</a></li>
+    <li><a href="/session6-udp.html">Lập trình Socket UDP</a></li>
+    <li><a href="/session7-threading.html">Đa tuyến & Xử lý đồng thời</a></li>
+    <li><a href="/session8-rmi.html">Multicast UDP & Java RMI</a></li>
+    <li><a href="/appendix-courses.html">Khóa học bổ trợ</a></li>
+  </ul>
+</nav>
+<style>
+.topnav {
+  background-color: #222;
+  overflow: hidden;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.topnav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.topnav li {
+  display: inline;
+}
+.topnav a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+}
+.topnav a:hover {
+  background-color: #575757;
+  color: #fff;
+}
+.topnav a.active {
+  background-color: #0078d7;
+  color: white;
+  border-radius: 3px;
+}
+</style>
+<!-- Code font-size control toolbar -->
+<div id="code-size-toolbar" style="position:fixed;right:18px;bottom:18px;background:rgba(0,0,0,0.6);color:#fff;padding:8px;border-radius:8px;z-index:9999;display:flex;gap:6px;align-items:center;font-family:Arial,Helvetica,sans-serif;">
+  <button id="code-decrease" title="Giảm cỡ chữ" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A-</button>
+  <button id="code-reset" title="Reset" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A</button>
+  <button id="code-increase" title="Tăng cỡ chữ" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A+</button>
+</div>
+
+<script>
+  (function(){
+    const root = document.documentElement;
+    const key = 'codeFontSizeRem';
+    const min = 0.6, max = 2.4, step = 0.1;
+    function getSize(){ return parseFloat(localStorage.getItem(key)) || 1.0; }
+    function setSize(v){ v = Math.min(max, Math.max(min, Math.round(v*10)/10)); localStorage.setItem(key, v); root.style.setProperty('--code-font-size', v + 'rem'); }
+    // init
+    setSize(getSize());
+    document.getElementById('code-decrease').addEventListener('click', ()=> setSize(getSize()-step));
+    document.getElementById('code-increase').addEventListener('click', ()=> setSize(getSize()+step));
+    document.getElementById('code-reset').addEventListener('click', ()=> setSize(1.0));
+  })();
+</script>
+<style>
+  :root{
+    --max-width: 1000px;
+    --bg: #ddd;
+    --card: #ffffff;
+    --muted: #666;
+    --accent: #e3bfb8;
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(102,102,102,0.12);
+    --base-font: 18px;
+  }
+
+  body{ background: var(--bg); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#0b1220; font-size:var(--base-font); line-height:1.6; }
+
+  .lesson-content{ max-width:var(--max-width); margin:28px auto; padding:28px; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); }
+
+  .lesson-content h1{ font-family: 'Oswald', 'Segoe UI', sans-serif; font-size:3rem; margin-bottom:10px; color:var(--accent); }
+  .lesson-content h2{ font-size:2rem; margin-top:22px; color:#0b2a44; }
+
+  .lesson-content ul{ margin-left:1.05rem; }
+
+  .topnav a{ padding:16px 22px; font-size:1rem; }
+
+  .lesson-content img{ display:block; width:100%; border-radius:8px; border:1px solid rgba(11,18,32,0.04); box-shadow:0 4px 12px rgba(9,18,28,0.04); margin-bottom:18px; }
+
+  :root{ --code-font-size: 1rem; }
+  pre{ background:#0b1220; color:#e6eef8; padding:20px; border-radius:10px; overflow:auto; font-family: 'Courier New', monospace; font-size:calc(var(--code-font-size) * 1.1); box-shadow:0 8px 24px rgba(2,6,23,0.25); }
+  code{ background:rgba(2,6,23,0.06); padding:4px 8px; border-radius:6px; font-family: 'Courier New', monospace; font-size:var(--code-font-size); }
+
+  .callout{ background: rgba(227,191,184,0.08); border-left:4px solid var(--accent); padding:12px 16px; border-radius:8px; margin-bottom:18px; }
+  .callout p{ margin:0; font-size:1.15rem; color:#0b1220; }
+
+  @media (max-width:640px){
+    :root{ --base-font:18px; }
+    .topnav ul{ display:block; }
+    .topnav li{ display:block; }
+    .topnav a{ display:block; padding:12px; }
+    .lesson-content{ margin:14px; padding:18px; border-radius:10px; }
+    .lesson-content h1{ font-size:2.2rem; }
+  }
+</style>
+<style>
+  .lesson-content b, .lesson-content strong { font-family: 'Oswald','Segoe UI',sans-serif; font-weight:700; color:#0b2a44; }
+</style>
+
+<div class="lesson-content">
+  <h1>Buổi 6: Lập trình Socket UDP</h1>
+
+  <h2>Mục tiêu bài học</h2>
+  <ul>
+    <li>Hiểu bản chất UDP: không kết nối (connectionless), không đảm bảo, thông điệp rời rạc (message-oriented).</li>
+    <li>Nắm lớp <code>DatagramSocket</code>, <code>DatagramPacket</code>, và vòng đời gửi/nhận.</li>
+    <li>Thực hành 1 mẫu: server/ client UDP kiểu echo (chuyển chuỗi sang UPPERCASE).</li>
+  </ul>
+
+  <h2>1. Lý thuyết bổ sung</h2>
+  <ul>
+    <li><b>Message-oriented</b>: mỗi <code>DatagramPacket</code> là một thông điệp độc lập; đọc đúng theo biên gói.</li>
+    <li><b>Không đảm bảo</b>: gói có thể mất/đến trễ/đảo thứ tự; nếu cần độ tin cậy, tự bổ sung cơ chế ACK/Retry hoặc cân nhắc TCP.</li>
+    <li><b>Kích thước gói</b>: nên giữ ≤ ~1400 byte để tránh phân mảnh IP trên Ethernet 1500 MTU.</li>
+  </ul>
+
+  <div class="callout"><p>Ghi nhớ: UDP phù hợp cho ứng dụng cần tốc độ/độ trễ thấp và chấp nhận mất mát. Luôn xác định rõ kích thước gói và cách đóng gói dữ liệu.</p></div>
+
+  <h2>2. Ví dụ duy nhất — UDP Echo (UPPERCASE)</h2>
+  <p>Client nhập 1 dòng, gửi qua UDP đến server; server chuyển chuỗi sang chữ hoa và gửi trả lại.</p>
+
+  <p><b>Mã server (UDPServer.java)</b></p>
+  <pre><code class="language-java">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.udp;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+/**
+ * @author PC
+ */
+public class UDPServer {
+  public static void main(String[] args) throws Exception {
+    DatagramSocket serverSocket = new DatagramSocket(9876);
+    byte[] receiveData = new byte[1024];
+    byte[] sendData = new byte[1024];
+    while (true) {
+      DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+      serverSocket.receive(receivePacket);
+      String sentence = new String(receivePacket.getData());
+      InetAddress IPAddress = receivePacket.getAddress();
+      int port = receivePacket.getPort();
+      String captializedSentence = sentence.toUpperCase();
+      sendData = captializedSentence.getBytes();
+      DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+      serverSocket.send(sendPacket);
+    }
+  }
+}
+  </code></pre>
+
+  <h3>Kết quả khi chạy server</h3>
+  <pre><code>
+Server chạy và chờ nhận gói UDP...
+  </code></pre>
+
+  <p><b>Mã client (UDPClient.java)</b></p>
+  <pre><code class="language-java">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.udp;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+/**
+ * @author PC
+ */
+public class UDPClient {
+  public static void main(String[] args) throws Exception {
+    BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+    DatagramSocket clientSocket = new DatagramSocket();
+    InetAddress IPAddress = InetAddress.getByName("localhost");
+    byte[] sendData = new byte[1024];
+    byte[] receiveData = new byte[1024];
+
+    String sentence = inFromUser.readLine();
+    sendData = sentence.getBytes();
+    DatagramPacket senPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
+    clientSocket.send(senPacket);
+
+    DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+    clientSocket.receive(receivePacket);
+    String modifiedSentence = new String(receivePacket.getData());
+    System.out.println("FROM SERVER:" + modifiedSentence);
+    clientSocket.close();
+  }
+}
+  </code></pre>
+
+  <h3>Kết quả khi chạy client (nhập "hello world")</h3>
+  <pre><code>
+hello world
+FROM SERVER:HELLO WORLD
+  </code></pre>
+
+  <h3>Giải thích chi tiết</h3>
+  <ul>
+    <li>Server dùng <code>DatagramSocket</code> bound cổng 9876, nhận gói rồi gửi phản hồi về địa chỉ/port nguồn.</li>
+    <li>Client gửi chuỗi người dùng nhập tới localhost:9876 và chờ gói trả lời.</li>
+    <li>Lưu ý: khi chuyển byte → String, cách an toàn là dùng độ dài thực tế của gói với <code>new String(packet.getData(), 0, packet.getLength())</code> để tránh ký tự thừa do đệm.</li>
+  </ul>
+
+  <h2>3. Lưu ý và thực hành tốt</h2>
+  <ul>
+    <li>Đặt <code>setSoTimeout</code> khi cần tránh chờ vô hạn; xử lý retry nếu yêu cầu.</li>
+    <li>Kiểm soát kích thước thông điệp phù hợp bộ đệm nhận và MTU mạng.</li>
+    <li>Đặt charset rõ ràng nếu dữ liệu không phải ASCII.</li>
+  </ul>
+
+  <h2>Tổng kết</h2>
+  <p>Ví dụ UDP echo này giúp nắm quy trình gửi/nhận cơ bản với DatagramSocket/DatagramPacket. Bạn có thể mở rộng để xử lý nhiều yêu cầu, đặt timeout, hoặc bổ sung retry theo nhu cầu ứng dụng.</p>
+</div>
+
+<style>
+  .pager{ max-width:var(--max-width); margin:10px auto 40px; padding:0 28px; display:flex; justify-content:space-between; align-items:center; }
+  .pager a{ display:inline-block; background:#0078d7; color:#fff; padding:12px 18px; border-radius:8px; text-decoration:none; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:background .2s ease, transform .1s ease; }
+  .pager a:hover{ background:#005a9e; transform:translateY(-1px); }
+  .pager a.disabled{ background:#b9c5d1; pointer-events:none; cursor:default; }
+</style>
+<div class="pager">
+  <a class="prev" href="/session5-tcp.html">← Trang trước</a>
+  <a class="next" href="/session7-threading.html">Trang sau →</a>
+</div>
+</body>
+</html>

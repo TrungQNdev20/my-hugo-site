@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hướng dẫn cài đặt Java & NetBeans</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" href="/style.main.min.b8048638da11b2704c9ac4157cecae3c80b86dacaa16790b14b3a9f17eade743.css">
+</head>
+<body>
+<nav class="topnav">
+  <ul>
+    <li><a href="/index.html">Trang chủ</a></li>
+    <li><a href="/java-installation.html">Giới thiệu & Cài đặt Java</a></li>
+    <li><a href="/session2-foundation.html">Kiến thức nền tảng</a></li>
+    <li><a href="/session3-io.html">Quản lý luồng nhập/xuất</a></li>
+    <li><a href="/session4-network-address.html">Quản lý địa chỉ mạng</a></li>
+    <li><a href="/session5-tcp.html">Lập trình Sockets TCP</a></li>
+    <li><a href="/session6-udp.html">Lập trình Socket UDP</a></li>
+    <li><a href="/session7-threading.html">Đa tuyến & Xử lý đồng thời</a></li>
+    <li><a href="/session8-rmi.html">Multicast UDP & Java RMI</a></li>
+    <li><a href="/appendix-courses.html">Khóa học bổ trợ</a></li>
+  </ul>
+</nav>
+<style>
+.topnav {
+  background-color: #222;
+  overflow: hidden;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.topnav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.topnav li {
+  display: inline;
+}
+.topnav a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+}
+.topnav a:hover {
+  background-color: #575757;
+  color: #fff;
+}
+.topnav a.active {
+  background-color: #0078d7;
+  color: white;
+  border-radius: 3px;
+}
+</style>
+<!-- Code font-size control toolbar -->
+<div id="code-size-toolbar" style="position:fixed;right:18px;bottom:18px;background:rgba(0,0,0,0.6);color:#fff;padding:8px;border-radius:8px;z-index:9999;display:flex;gap:6px;align-items:center;font-family:Arial,Helvetica,sans-serif;">
+  <button id="code-decrease" title="Giảm cỡ chữ" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A-</button>
+  <button id="code-reset" title="Reset" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A</button>
+  <button id="code-increase" title="Tăng cỡ chữ" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A+</button>
+</div>
+
+<script>
+  (function(){
+    const root = document.documentElement;
+    const key = 'codeFontSizeRem';
+    const min = 0.6, max = 2.4, step = 0.1;
+    function getSize(){ return parseFloat(localStorage.getItem(key)) || 1.0; }
+    function setSize(v){ v = Math.min(max, Math.max(min, Math.round(v*10)/10)); localStorage.setItem(key, v); root.style.setProperty('--code-font-size', v + 'rem'); }
+    // init
+    setSize(getSize());
+    document.getElementById('code-decrease').addEventListener('click', ()=> setSize(getSize()-step));
+    document.getElementById('code-increase').addEventListener('click', ()=> setSize(getSize()+step));
+    document.getElementById('code-reset').addEventListener('click', ()=> setSize(1.0));
+  })();
+</script>
+<style>
+  :root{
+    --max-width: 1000px;
+    --bg: #ddd;
+    --card: #ffffff;
+    --muted: #666;
+    --accent: #e3bfb8;
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(102,102,102,0.12);
+    --base-font: 18px;
+  }
+
+  body{ background: var(--bg); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#0b1220; font-size:var(--base-font); line-height:1.6; }
+
+  .lesson-content{ max-width:var(--max-width); margin:28px auto; padding:28px; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); }
+
+  .lesson-content h1{ font-family: 'Oswald', 'Segoe UI', sans-serif; font-size:3rem; margin-bottom:10px; color:var(--accent); }
+  .lesson-content h2{ font-size:2rem; margin-top:22px; color:#0b2a44; }
+
+  .lesson-content ul{ margin-left:1.05rem; }
+
+  .topnav a{ padding:16px 22px; font-size:1rem; }
+
+  .lesson-content img{ display:block; width:100%; border-radius:8px; border:1px solid rgba(11,18,32,0.04); box-shadow:0 4px 12px rgba(9,18,28,0.04); margin-bottom:18px; }
+
+  :root{ --code-font-size: 1rem; }
+  pre{ background:#0b1220; color:#e6eef8; padding:20px; border-radius:10px; overflow:auto; font-family: 'Courier New', monospace; font-size:calc(var(--code-font-size) * 1.1); box-shadow:0 8px 24px rgba(2,6,23,0.25); }
+  code{ background:rgba(2,6,23,0.06); padding:4px 8px; border-radius:6px; font-family: 'Courier New', monospace; font-size:var(--code-font-size); }
+
+  .callout{ background: rgba(227,191,184,0.08); border-left:4px solid var(--accent); padding:12px 16px; border-radius:8px; margin-bottom:18px; }
+  .callout p{ margin:0; font-size:1.15rem; color:#0b1220; }
+
+  @media (max-width:640px){
+    :root{ --base-font:18px; }
+    .topnav ul{ display:block; }
+    .topnav li{ display:block; }
+    .topnav a{ display:block; padding:12px; }
+    .lesson-content{ margin:14px; padding:18px; border-radius:10px; }
+    .lesson-content h1{ font-size:2.2rem; }
+  }
+</style>
+<style>
+  .lesson-content b, .lesson-content strong { font-family: 'Oswald','Segoe UI',sans-serif; font-weight:700; color:#0b2a44; }
+</style>
+<div class="lesson-content">
+  <h1>Hướng dẫn cài đặt Java & NetBeans</h1>
+
+  <h2>Mục tiêu bài học</h2>
+  <ul>
+    <li>Hiểu cách tải và cài đặt JDK (Java Development Kit)</li>
+    <li>Thiết lập biến môi trường (PATH, JAVA_HOME)</li>
+    <li>Tải và cài đặt IDE NetBeans</li>
+    <li>Khởi tạo dự án Java đầu tiên trên NetBeans</li>
+  </ul>
+
+  <h2>1. Tải và cài đặt JDK (Java Development Kit)</h2>
+  <p>
+    - Truy cập trang chính thức Oracle hoặc OpenJDK để tải bản JDK phù hợp hệ điều hành của bạn.  
+    - Sau khi tải xong, chạy file cài đặt và làm theo hướng dẫn.  
+    - Trong quá trình cài, ghi nhớ thư mục cài JDK (ví dụ: <code>C:\Program Files\Java\jdk-xx</code> trên Windows).  
+    - Thiết lập biến môi trường (Windows): <code>JAVA_HOME</code> trỏ tới thư mục JDK, và thêm <code>%JAVA_HOME%\bin</code> vào <code>PATH</code>.  
+  </p>
+
+  <h2>2. Tải và cài đặt NetBeans IDE</h2>
+  <p>
+    - Truy cập trang tải NetBeans: <a href="https://netbeans.apache.org/download/" target="_blank">Apache NetBeans Downloads</a> :contentReference[oaicite:1]{index=1}  
+    - Chọn bản phù hợp hệ điều hành (Windows, macOS, Linux).  
+    - Chạy file installer, chấp nhận điều khoản, chọn các module cần thiết.  
+  </p>
+  <img src="img/netbeans-install-step.png" alt="Bước khởi động installer NetBeans" style="width:100%;border-radius:8px;margin-bottom:15px;">
+
+  <h2>3. Minh họa các bước cài đặt NetBeans</h2>
+  <img src="img/netbeans-install-step1.png" alt="Bước khởi động installer NetBeans" style="width:100%;border-radius:8px;margin-bottom:15px;">
+  <pre><code>
+← Đây là màn hình khởi đầu của trình cài NetBeans (ví dụ chọn các module)  
+  </code></pre>
+  <img src="img/CustomeNetbean.png" alt="Chọn đường dẫn cài đặt" style="width:100%;border-radius:8px;margin-bottom:15px;">
+  <img src="img/CustomNetbean.png" alt="Chọn đường dẫn cài đặt" style="width:100%;border-radius:8px;margin-bottom:15px;">
+  <img src="img/netbeans-install-step2.png" alt="Chọn đường dẫn cài đặt" style="width:100%;border-radius:8px;margin-bottom:15px;">
+  <pre><code>
+← Chọn thư mục cài đặt và các tuỳ chọn cấu hình
+  </code></pre>
+
+  <img src="img/netbeans-install-step3.png" alt="Cài đặt hoàn tất" style="width:100%;border-radius:8px;margin-bottom:15px;">
+  <pre><code>
+← Sau khi cài xong, bạn sẽ thấy giao diện hoàn tất (Finish)
+  </code></pre>
+
+  <h2>4. Tạo và chạy dự án Java đầu tiên bằng NetBeans</h2>
+  <p>
+    - Mở NetBeans, chọn **File → New Project…** :contentReference[oaicite:2]{index=2}  
+    - Chọn loại dự án “Java Application”  
+    - Nhập tên dự án, vị trí lưu, chọn package và class main  
+    - NetBeans sẽ tự tạo file `.java` có phương thức <code>main</code>  
+    - Viết đoạn code “Hello World” và chạy dự án bằng nút Run hoặc chuột phải → Run  
+  </p>
+
+  <pre><code class="language-java">
+package com.example.helloworld;
+
+public class HelloWorld {
+   public static void main(String[] args) {
+       System.out.println("Xin chào từ NetBeans!");
+   }
+}
+  </code></pre>
+
+  <h3>Kết quả khi chạy</h3>
+  <pre><code>
+Xin chào từ NetBeans!
+  </code></pre>
+
+  <h2>5. Giải thích & lưu ý</h2>
+  <p>
+    - NetBeans hỗ trợ biên dịch tự động, bạn không cần dòng lệnh để compile.  
+    - Nếu IDE không nhận ra JDK, bạn vào **Tools → Java Platforms → Add Platform** để đăng ký JDK của bạn :contentReference[oaicite:3]{index=3}  
+    - Đảm bảo Java version >= yêu cầu của NetBeans (vd: NetBeans 8 yêu cầu JDK 7+). :contentReference[oaicite:4]{index=4}  
+  </p>
+
+  <h2>Tổng kết</h2>
+  <p>
+    Sau buổi này bạn đã có môi trường Java + NetBeans hoạt động sẵn sàng để viết mã Java. Ở các buổi sau, ta sẽ dùng NetBeans để phát triển các ứng dụng mạng (socket, multicast, RMI, …).
+  </p>
+</div>
+
+<style>
+  .pager{ max-width:var(--max-width); margin:10px auto 40px; padding:0 28px; display:flex; justify-content:space-between; align-items:center; }
+  .pager a{ display:inline-block; background:#0078d7; color:#fff; padding:12px 18px; border-radius:8px; text-decoration:none; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:background .2s ease, transform .1s ease; }
+  .pager a:hover{ background:#005a9e; transform:translateY(-1px); }
+  .pager a.disabled{ background:#b9c5d1; pointer-events:none; cursor:default; }
+</style>
+<div class="pager">
+  <a class="prev" href="/index.html">← Trang trước</a>
+  <a class="next" href="/session2-foundation.html">Trang sau →</a>
+</div>
+</body>
+</html>

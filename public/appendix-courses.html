@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khóa học bổ trợ: Network Basic & JavaScript Essentials</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" href="/style.main.min.b8048638da11b2704c9ac4157cecae3c80b86dacaa16790b14b3a9f17eade743.css">
+</head>
+<body>
+<nav class="topnav">
+  <ul>
+    <li><a href="/index.html">Trang chủ</a></li>
+    <li><a href="/java-installation.html">Giới thiệu & Cài đặt Java</a></li>
+    <li><a href="/session2-foundation.html">Kiến thức nền tảng</a></li>
+    <li><a href="/session3-io.html">Quản lý luồng nhập/xuất</a></li>
+    <li><a href="/session4-network-address.html">Quản lý địa chỉ mạng</a></li>
+    <li><a href="/session5-tcp.html">Lập trình Sockets TCP</a></li>
+    <li><a href="/session6-udp.html">Lập trình Socket UDP</a></li>
+    <li><a href="/session7-threading.html">Đa tuyến & Xử lý đồng thời</a></li>
+    <li><a href="/session8-rmi.html">Multicast UDP & Java RMI</a></li>
+    <li><a href="/appendix-courses.html">Khóa học bổ trợ</a></li>
+  </ul>
+</nav>
+<style>
+.topnav {
+  background-color: #222;
+  overflow: hidden;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.topnav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.topnav li {
+  display: inline;
+}
+.topnav a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+}
+.topnav a:hover {
+  background-color: #575757;
+  color: #fff;
+}
+.topnav a.active {
+  background-color: #0078d7;
+  color: white;
+  border-radius: 3px;
+}
+</style>
+<!-- Code font-size control toolbar -->
+<div id="code-size-toolbar" style="position:fixed;right:18px;bottom:18px;background:rgba(0,0,0,0.6);color:#fff;padding:8px;border-radius:8px;z-index:9999;display:flex;gap:6px;align-items:center;font-family:Arial,Helvetica,sans-serif;">
+  <button id="code-decrease" title="Giảm cỡ chữ" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A-</button>
+  <button id="code-reset" title="Reset" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A</button>
+  <button id="code-increase" title="Tăng cỡ chữ" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A+</button>
+</div>
+
+<script>
+  (function(){
+    const root = document.documentElement;
+    const key = 'codeFontSizeRem';
+    const min = 0.6, max = 2.4, step = 0.1;
+    function getSize(){ return parseFloat(localStorage.getItem(key)) || 1.0; }
+    function setSize(v){ v = Math.min(max, Math.max(min, Math.round(v*10)/10)); localStorage.setItem(key, v); root.style.setProperty('--code-font-size', v + 'rem'); }
+    // init
+    setSize(getSize());
+    document.getElementById('code-decrease').addEventListener('click', ()=> setSize(getSize()-step));
+    document.getElementById('code-increase').addEventListener('click', ()=> setSize(getSize()+step));
+    document.getElementById('code-reset').addEventListener('click', ()=> setSize(1.0));
+  })();
+</script>
+<style>
+  :root{
+    --max-width: 1000px;
+    --bg: #ddd;
+    --card: #ffffff;
+    --muted: #666;
+    --accent: #e3bfb8;
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(102,102,102,0.12);
+    --base-font: 18px;
+  }
+
+  body{ background: var(--bg); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#0b1220; font-size:var(--base-font); line-height:1.6; }
+
+  .lesson-content{ max-width:var(--max-width); margin:28px auto; padding:28px; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); }
+
+  .lesson-content h1{ font-family: 'Oswald', 'Segoe UI', sans-serif; font-size:3rem; margin-bottom:10px; color:var(--accent); }
+  .lesson-content h2{ font-size:2rem; margin-top:22px; color:#0b2a44; }
+
+  .lesson-content ul{ margin-left:1.05rem; }
+
+  .topnav a{ padding:16px 22px; font-size:1rem; }
+
+  .lesson-content img{ display:block; width:100%; border-radius:8px; border:1px solid rgba(11,18,32,0.04); box-shadow:0 4px 12px rgba(9,18,28,0.04); margin-bottom:18px; }
+
+  :root{ --code-font-size: 1rem; }
+  pre{ background:#0b1220; color:#e6eef8; padding:20px; border-radius:10px; overflow:auto; font-family: 'Courier New', monospace; font-size:calc(var(--code-font-size) * 1.1); box-shadow:0 8px 24px rgba(2,6,23,0.25); }
+  code{ background:rgba(2,6,23,0.06); padding:4px 8px; border-radius:6px; font-family: 'Courier New', monospace; font-size:var(--code-font-size); }
+
+  .callout{ background: rgba(227,191,184,0.08); border-left:4px solid var(--accent); padding:12px 16px; border-radius:8px; margin-bottom:18px; }
+  .callout p{ margin:0; font-size:1.15rem; color:#0b1220; }
+
+  @media (max-width:640px){
+    :root{ --base-font:18px; }
+    .topnav ul{ display:block; }
+    .topnav li{ display:block; }
+    .topnav a{ display:block; padding:12px; }
+    .lesson-content{ margin:14px; padding:18px; border-radius:10px; }
+    .lesson-content h1{ font-size:2.2rem; }
+  }
+</style>
+<style>
+  .lesson-content b, .lesson-content strong { font-family: 'Oswald','Segoe UI',sans-serif; font-weight:700; color:#0b2a44; }
+</style>
+
+<div class="lesson-content">
+  <h1>Khóa học bổ trợ — Network Basic & JavaScript Essentials</h1>
+
+  <h2>Mục tiêu</h2>
+  <ul>
+    <li>Tổng quan các kiến thức nền tảng hỗ trợ môn Lập trình Mạng.</li>
+    <li>Định hướng nội dung ôn tập cho các chứng chỉ: Network Basic, JavaScript Essentials 1 & 2.</li>
+    <li>Gợi ý thực hành/lab và tài nguyên tự học chất lượng.</li>
+  </ul>
+
+  <div class="callout"><p>Các khóa học bổ trợ giúp củng cố nền tảng mạng máy tính và JavaScript — hai mảng quan trọng khi xây dựng ứng dụng mạng từ backend đến frontend.</p></div>
+
+  <h2>1. Network Basic (Cisco)</h2>
+  <ul>
+    <li>Mô hình tham chiếu OSI và TCP/IP; đóng gói dữ liệu, MTU, phân mảnh.</li>
+    <li>Địa chỉ IPv4/IPv6, subnetting, CIDR; định tuyến cơ bản, gateway, NAT.</li>
+    <li>Switching, VLAN, ARP, ICMP; dịch vụ hạ tầng: DHCP, DNS.</li>
+    <li>Phân tích gói với Wireshark: TCP handshake, HTTP request/response, UDP.</li>
+  </ul>
+  <h3>Gợi ý thực hành</h3>
+  <ul>
+    <li>Cấu hình IP tĩnh/động; tính subnet, chia mạng, kiểm tra bằng ping/traceroute.</li>
+    <li>Chụp gói TCP 3-way handshake khi chạy bài TCP/UDP ở các buổi 5–6.</li>
+    <li>Thử NAT trên router ảo (GNS3/Packet Tracer) và quan sát thay đổi địa chỉ.</li>
+  </ul>
+
+  <h2>2. JavaScript Essentials 1 (Cisco)</h2>
+  <ul>
+    <li>Kiểu dữ liệu, biến (<code>let</code>, <code>const</code>), toán tử, điều khiển luồng.</li>
+    <li>Hàm, phạm vi, mảng, đối tượng; thao tác chuỗi và số.</li>
+    <li>Cơ bản DOM/event (nếu học trên nền web) và thực hành debug.</li>
+  </ul>
+  <h3>Lợi ích & Chứng chỉ</h3>
+  <ul>
+    <li>Củng cố nền tảng JavaScript để đọc/viết tool kiểm thử API, thao tác dữ liệu JSON.</li>
+    <li>Hỗ trợ xây UI đơn gi���n phục vụ demo/đồ án backend mạng.</li>
+    <li>Chứng chỉ: Cisco Skills For All – JavaScript Essentials 1 (miễn phí, trực tuyến).</li>
+  </ul>
+
+  <h2>3. JavaScript Essentials 2 (Cisco)</h2>
+  <ul>
+    <li>ES6+: arrow function, template literal, destructuring, module import/export.</li>
+    <li>Bất đồng bộ: callback → Promise → <code>async/await</code>; Fetch API cơ bản.</li>
+    <li>Thực hành gọi API, xử lý lỗi, và hiển thị dữ liệu.</li>
+  </ul>
+  <h3>Lợi ích & Chứng chỉ</h3>
+  <ul>
+    <li>Nắm b��t đồng bộ hiện đại để gọi dịch vụ REST/WebSocket, quan trọng ở ứng dụng mạng.</li>
+    <li>Chuẩn bị nền tảng cho framework frontend hoặc tool CLI bằng Node.js.</li>
+    <li>Chứng chỉ: Cisco Skills For All – JavaScript Essentials 2 (miễn phí, trực tuyến).</li>
+  </ul>
+
+  <h2>4. Liên hệ với chương trình học</h2>
+  <ul>
+    <li>Network Basic ←→ Buổi 2, 4, 5, 6, 8: địa chỉ mạng, TCP/UDP, multicast, phân tích gói.</li>
+    <li>JS Essentials ←→ xây dựng giao diện/console tool kiểm thử dịch vụ (REST/WebSocket) bổ trợ cho backend Java.</li>
+    <li>Đồ án: có thể tạo UI nhỏ (HTML/JS) để kiểm thử server TCP/UDP hoặc REST gateway.</li>
+  </ul>
+
+  <h2>5. Tài nguyên tham khảo</h2>
+  <ul>
+    <li>Cisco Skills For All: Network Basics; JavaScript Essentials 1 & 2.</li>
+    <li>MDN Web Docs: JavaScript Guide, Fetch API, Async/Await.</li>
+    <li>Wireshark Labs: thực hành bắt gói TCP/UDP/HTTP.</li>
+  </ul>
+
+  <h2>Ví dụ minh họa</h2>
+  <pre><code class="language-javascript">// Ví dụ JavaScript cơ bản
+console.log("Hello from JavaScript!");
+  </code></pre>
+
+  <h3>Kết quả khi chạy</h3>
+  <pre><code>
+Hello from JavaScript!
+  </code></pre>
+
+  <h2>Tổng kết</h2>
+  <p>Hoàn thành các khóa bổ trợ sẽ giúp bạn vững kiến thức nền tảng và tăng tốc khi triển khai các bài thực hành/labs trong môn Lập trình Mạng cũng như các dự án web sau này.</p>
+</div>
+
+<style>
+  .pager{ max-width:var(--max-width); margin:10px auto 40px; padding:0 28px; display:flex; justify-content:space-between; align-items:center; }
+  .pager a{ display:inline-block; background:#0078d7; color:#fff; padding:12px 18px; border-radius:8px; text-decoration:none; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:background .2s ease, transform .1s ease; }
+  .pager a:hover{ background:#005a9e; transform:translateY(-1px); }
+  .pager a.disabled{ background:#b9c5d1; pointer-events:none; cursor:default; }
+</style>
+<div class="pager">
+  <a class="prev" href="/session8-rmi.html">← Trang trước</a>
+  <a class="next disabled" aria-disabled="true">Trang sau →</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Quốc Trung - CV</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/style.main.min.b8048638da11b2704c9ac4157cecae3c80b86dacaa16790b14b3a9f17eade743.css" crossorigin="anonymous" media="screen,print" />
+</head>
+
+<style>
+    /* Adjust base font size to better fit current layout */
+    html { font-size: 16px; }
+    body { font-size: 0.95rem; line-height: 1.5; }
+
+    /* Scale main heading and section titles */
+    .mainHeading { font-size: 2.4rem; }
+    .mainHeading span { font-size: 2.4rem; }
+    .section__title { font-size: 1.5rem; }
+    .sideSection__title { font-size: 1.3rem; }
+    .experience__position { font-size: 1.1rem; }
+
+    /* Make sidebar text slightly larger */
+    .content__right { font-size: 0.95rem; }
+
+    /* Certificates images and other small text adjustments */
+    .certificate__img { max-height: 140px; }
+
+    /* Responsive adjustments: reduce sizes on small screens */
+    @media (max-width: 1200px) {
+        html { font-size: 15px; }
+        .mainHeading { font-size: 1.0rem; }
+        .section__title { font-size: 1.3rem; }
+        .sideSection__title { font-size: 1.1rem; }
+        .certificate__img { max-height: 90px; }
+    }
+
+</style>
+
+<body>
+    <!-- THANH ĐIỀU HƯỚNG -->
+ <nav class="topnav">
+  <ul>
+    <li><a href="/index.html">Trang chủ</a></li>
+    <li><a href="/java-installation.html">Giới thiệu & Cài đặt Java</a></li>
+    <li><a href="/session2-foundation.html">Kiến thức nền tảng</a></li>
+    <li><a href="/session3-io.html">Quản lý luồng nhập/xuất</a></li>
+    <li><a href="/session4-network-address.html">Quản lý địa chỉ mạng</a></li>
+    <li><a href="/session5-tcp.html">Lập trình Sockets TCP</a></li>
+    <li><a href="/session6-udp.html">Lập trình Socket UDP</a></li>
+    <li><a href="/session7-threading.html">Đa tuyến & Xử lý đồng thời</a></li>
+    <li><a href="/session8-rmi.html">Multicast UDP & Java RMI</a></li>
+    <li><a href="/appendix-courses.html">Khóa học bổ trợ</a></li>
+  </ul>
+</nav>
+
+<style>
+ .topnav {
+   background-color: #222;
+   overflow: hidden;
+   text-align: center;
+   margin-bottom: 20px;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+ }
+ .topnav ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   display: inline-block;
+ }
+ .topnav li {
+   display: inline;
+ }
+ .topnav a {
+   display: inline-block;
+   color: white;
+   font-size: 0.67rem;
+   text-align: center;
+   padding: 14px 20px;
+   text-decoration: none;
+   font-family: 'Roboto', sans-serif;
+ }
+ .topnav a:hover {
+   background-color: #575757;
+   color: #fff;
+ }
+ .topnav a.active {
+   background-color: #0078d7;
+   color: white;
+   border-radius: 3px;
+ }
+ </style>
+
+<style>
+.certificates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.certificate__item {
+    text-align: center;
+    max-width: 200px;
+}
+
+.certificate__img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.certificates-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.certificates-sidebar .certificate__item {
+    text-align: center;
+    max-width: 100%;
+}
+
+    .certificates-sidebar .certificate__img {
+        width: 100%;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+    :root{ --code-font-size: 1rem; }
+    pre{ background:#0b1220; color:#e6eef8; padding:20px; border-radius:10px; overflow:auto; font-family: 'Courier New', monospace; font-size:calc(var(--code-font-size) * 1.1); box-shadow:0 8px 24px rgba(2,6,23,0.25); }
+    code{ background:rgba(2,6,23,0.06); padding:4px 8px; border-radius:6px; font-family: 'Courier New', monospace; font-size:var(--code-font-size); }
+</style>
+<!-- Code font-size control toolbar -->
+<div id="code-size-toolbar" style="position:fixed;right:18px;bottom:18px;background:rgba(0,0,0,0.6);color:#fff;padding:8px;border-radius:8px;z-index:9999;display:flex;gap:6px;align-items:center;font-family:Arial,Helvetica,sans-serif;">
+    <button id="code-decrease" title="Giảm cỡ chữ" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A-</button>
+    <button id="code-reset" title="Reset" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A</button>
+    <button id="code-increase" title="Tăng cỡ chữ" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer;">A+</button>
+</div>
+
+<script>
+    (function(){
+        const root = document.documentElement;
+        const key = 'codeFontSizeRem';
+        const min = 0.6, max = 2.4, step = 0.1;
+        function getSize(){ return parseFloat(localStorage.getItem(key)) || 1.0; }
+        function setSize(v){ v = Math.min(max, Math.max(min, Math.round(v*10)/10)); localStorage.setItem(key, v); root.style.setProperty('--code-font-size', v + 'rem'); }
+        // init
+        setSize(getSize());
+        document.getElementById('code-decrease').addEventListener('click', ()=> setSize(getSize()-step));
+        document.getElementById('code-increase').addEventListener('click', ()=> setSize(getSize()+step));
+        document.getElementById('code-reset').addEventListener('click', ()=> setSize(1.0));
+    })();
+</script>
+
+<div class="content" style="width: 1150px !important;">
+
+    <!-- CỘT TRÁI -->
+    <div class="content__left" style="width: 750px !important;">
+        <h1 class="mainHeading">Nguyễn Quốc <span>Trung</span></h1>
+
+        <!-- GIỚI THIỆU -->
+        <div id="profile" class="section">
+            <div class="section__heading">
+                <h2 class="section__title">Giới thiệu</h2>
+            </div>
+            <div class="section__content" style="font-size: 1.0rem;">
+                <p>Tôi là sinh viên năm 4 ngành Công nghệ thông tin tại Đại học HUTECH, chuyên ngành Công nghệ phần mềm. 
+                Tôi có niềm đam mê với lập trình và công nghệ web, đã học qua các ngôn ngữ C, Java, C#, Python, HTML, CSS và Javascript. 
+                Hiện tôi tập trung vào phát triển ứng dụng với ASP.NET Core và SQL Server. 
+                Mục tiêu của tôi là trở thành lập trình viên full-stack có khả năng xây dựng những sản phẩm thân thiện và tối ưu cho người dùng.</p>
+            </div>
+        </div>
+
+        <!-- KINH NGHIỆM -->
+        <div id="experience" class="section">
+            <div class="section__heading">
+                <h2 class="section__title">Kinh nghiệm</h2>
+            </div>
+            <div class="section__content">
+                <div class="experience">
+
+                    <div class="experience__item">
+                        <div class="experience__header">
+                            <h3 class="experience__company">Dự án học tập và cá nhân</h3>
+                            <h3 class="experience__place">TP. HCM, Việt Nam</h3>
+                        </div>
+
+                        <div class="experience__job">
+                            <div class="experience__subheader">
+                                <h3 class="experience__position">Lập trình viên ASP.NET Core</h3>
+                                <h3 class="experience__date">2024 - Nay</h3>
+                            </div>
+                            <ul>
+                                <li class="experience__bullet">Phát triển website quản lý giao dịch tiền mặt bằng WinForms và C#</li>
+                                <li class="experience__bullet">Xây dựng ứng dụng web bán hàng với ASP.NET Core MVC</li>
+                                <li class="experience__bullet">Thiết kế và quản lý cơ sở dữ liệu SQL Server</li>
+                                <li class="experience__bullet">Triển khai website lên nền tảng Somee và GitHub Pages</li>
+                            </ul>
+                            <div class="experience__badges">
+                                <ul>
+                                    <li class="experience__badge">C#</li>
+                                    <li class="experience__badge">ASP.NET Core</li>
+                                    <li class="experience__badge">SQL Server</li>
+                                    <li class="experience__badge">Entity Framework</li>
+                                    <li class="experience__badge">HTML</li>
+                                    <li class="experience__badge">CSS</li>
+                                    <li class="experience__badge">Javascript</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience__job">
+                            <div class="experience__subheader">
+                                <h3 class="experience__position">Lập trình viên Python – Dự án học thuật</h3>
+                                <h3 class="experience__date">2023</h3>
+                            </div>
+                            <ul>
+                                <li class="experience__bullet">Phát triển ứng dụng chat client-server qua TCP socket</li>
+                                <li class="experience__bullet">Xử lý dữ liệu JSON và đa luồng</li>
+                                <li class="experience__bullet">Tạo giao diện bằng Windows Forms</li>
+                            </ul>
+                            <div class="experience__badges">
+                                <ul>
+                                    <li class="experience__badge">Python</li>
+                                    <li class="experience__badge">Socket</li>
+                                    <li class="experience__badge">JSON</li>
+                                    <li class="experience__badge">Multithreading</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="experience__item">
+                        <div class="experience__header">
+                            <h3 class="experience__company">Thực tập sinh (Dự kiến)</h3>
+                            <h3 class="experience__place">TP. HCM</h3>
+                        </div>
+
+                        <div class="experience__job">
+                            <div class="experience__subheader">
+                                <h3 class="experience__position">Web Developer Intern</h3>
+                                <h3 class="experience__date">2025</h3>
+                            </div>
+                            <ul>
+                                <li class="experience__bullet">Mong muốn tham gia môi trường doanh nghiệp để học hỏi quy trình Agile</li>
+                                <li class="experience__bullet">Rèn luyện kỹ năng teamwork và phát triển web thực tế</li>
+                            </ul>
+                            <div class="experience__badges">
+                                <ul>
+                                    <li class="experience__badge">ASP.NET Core</li>
+                                    <li class="experience__badge">React</li>
+                                    <li class="experience__badge">Git</li>
+                                    <li class="experience__badge">Agile</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- HỌC VẤN -->
+        <div id="education" class="section">
+            <div class="section__heading">
+                <h2 class="section__title">Học vấn</h2>
+            </div>
+            <div class="section__content">
+                <div class="education__item">
+                    <h3 class="education__title">Cử nhân Công nghệ thông tin – Công nghệ phần mềm</h3>
+                    <h4 class="education__place">Đại học Công nghệ TP. HCM (HUTECH)</h4>
+                    <h4 class="education__date">2022 - Nay</h4>
+                    <div class="education__description">Đã học qua các môn C, Java, C#, Python, ASP.NET Core, Web, SQL Server.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHỨNG CHỈ -->
+        <div id="certificates" class="section">
+            <div class="section__heading">
+                <h2 class="section__title">Chứng chỉ</h2>
+            </div>
+            <div class="section__content">
+                <div class="certificates">
+                    <div class="certificate__item">
+                        <img src="img/Nguyễn Quốc Trung HTML & CSS Certificate.png" alt="Chứng chỉ Lập trình Web (F8)" class="certificate__img">
+                        <p>Chứng chỉ Lập trình Web (F8)</p>
+                    </div>
+                    <div class="certificate__item">
+                        <img src="img/Cisco.png" alt="Chứng chỉ Network Basic (Cisco)" class="certificate__img">
+                        <p>Chứng chỉ Network Basic (Cisco)</p>
+                    </div>
+                    <div class="certificate__item">
+                        <img src="img/js1.png" alt="Chứng chỉ JavaScript Essentials 1 (Cisco)" class="certificate__img">
+                        <p>Chứng chỉ JavaScript Essentials 1 (Cisco)</p>
+                    </div>
+                    <div class="certificate__item">
+                        <img src="img/js2.png" alt="Chứng chỉ JavaScript Essentials 2 (Cisco)" class="certificate__img">
+                        <p>Chứng chỉ JavaScript Essentials 2 (Cisco)</p>
+                    </div>
+                    <div class="certificate__item">
+                        <p>Dự kiến tốt nghiệp Đại học HUTECH (2026)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CỘT PHẢI -->
+    <div class="content__right">
+
+        <!-- ẢNH -->
+        <div class="sideSection avatar">
+            <div class="avatar__container">
+                <img class="avatar__img" src="img/avatar.png" alt="Ảnh cá nhân">
+            </div>
+        </div>
+
+        <!-- LIÊN HỆ -->
+        <div class="sideSection contact">
+            <ul>
+                <li class="contact__item"><i class="fas fa-phone"></i><span>+0933356215</span></li>
+                <li class="contact__item"><i class="fas fa-envelope"></i><span>paulonguyen3@gmail.com</span></li>
+                <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link" href="https://quoc-trung.dev" target="_blank">quoc-trung.dev</a></span></li>
+                <li class="contact__item"><i class="fas fa-map-marker-alt"></i><span>TP. Hồ Chí Minh, Việt Nam</span></li>
+            </ul>
+        </div>
+
+        <!-- KỸ NĂNG -->
+        <div class="sideSection">
+            <div class="sideSection__heading"><h2 class="sideSection__title">Kỹ năng</h2></div>
+            <div class="sideSection__content">
+                <ul class="skills">
+                    <li>
+                        <ul class="skills__group">
+                            <span>Ngôn ngữ lập trình</span><br>
+                            <li>C</li><li>Java</li><li>C#</li><li>Python</li><li>HTML</li><li>CSS</li><li>Javascript</li><li>SQL</li>
+                        </ul>
+                        <ul class="skills__group">
+                            <span>Frameworks</span><br>
+                            <li>ASP.NET Core</li><li>Entity Framework</li><li>Flask</li><li>React (Cơ bản)</li>
+                        </ul>
+                        <ul class="skills__group">
+                            <span>Công cụ phát triển</span><br>
+                            <li>Git / GitHub</li><li>Visual Studio</li><li>VS Code</li><li>SQL Server</li>
+                        </ul>
+                        <ul class="skills__group">
+                            <span>Kỹ năng khác</span><br>
+                            <li>Thiết kế giao diện WinForms</li><li>Làm việc nhóm (Agile)</li><li>Viết tài liệu kỹ thuật</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NGOẠI NGỮ -->
+        <div class="sideSection">
+            <div class="sideSection__heading"><h2 class="sideSection__title">Ngoại ngữ</h2></div>
+            <div class="sideSection__content">
+                <ul class="language">
+                    <li class="language__item"><div class="language__name">Tiếng Việt</div><div class="language__level">Bản ngữ</div></li>
+                    <li class="language__item"><div class="language__name">Tiếng Anh</div><div class="language__level">Khá (đọc hiểu tài liệu tốt)</div></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CHỨNG CHỈ -->
+       <!-- <div class="sideSection">
+            <div class="sideSection__heading"><h2 class="sideSection__title">Chứng chỉ</h2></div>
+            <div class="sideSection__content">
+                <ul>
+                    <li>Chứng chỉ Lập trình Web (F8)</li>
+                    <li>Chứng chỉ Network Basic (Cisco)</li>
+                    <li>Chứng chỉ JavaScript Essentials 1 (Cisco)</li>
+                    <li>Chứng chỉ JavaScript Essentials 2 (Cisco)</li>
+                    <li>Dự kiến tốt nghiệp Đại học HUTECH (2026)</li>
+                </ul>
+            </div>
+        </div> -->
+
+        <!-- SỞ THÍCH -->
+        <div class="sideSection">
+            <div class="sideSection__heading"><h2 class="sideSection__title">Sở thích</h2></div>
+            <div class="sideSection__content">
+                <ul class="interests">
+                    <li>Lập trình và công nghệ mới</li>
+                    <li>Nghe nhạc</li>
+                    <li>Đá bóng</li>
+                    <li>Du lịch</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+  .pager{ max-width:1000px; margin:10px auto 40px; padding:0 28px; display:flex; justify-content:space-between; align-items:center; }
+  .pager a{ display:inline-block; background:#0078d7; color:#fff; padding:12px 18px; border-radius:8px; text-decoration:none; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:background .2s ease, transform .1s ease; }
+  .pager a:hover{ background:#005a9e; transform:translateY(-1px); }
+  .pager a.disabled{ background:#b9c5d1; pointer-events:none; cursor:default; }
+</style>
+<div class="pager">
+  <a class="next" href="/java-installation.html">Trang sau →</a>
+</div>
+</body>
+</html>
