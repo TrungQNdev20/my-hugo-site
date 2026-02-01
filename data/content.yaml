@@ -1,7 +1,7 @@
 BasicInfo:
-  FirstName: Nguyễn Quốc
+  FirstName: Nguyen Quoc
   LastName: Trung
-  Photo: img/avatar.jpg
+  Photo: img/avatar_new.png
   Contacts:
     - Icon: fas fa-phone
       Info: +0933356215
@@ -10,135 +10,117 @@ BasicInfo:
     - Icon: fas fa-globe
       Info: <a class="contact__link" href="https://quoc-trung.dev" target="_blank">quoc-trung.dev</a>
     - Icon: fas fa-map-marker-alt
-      Info: Thành phố Hồ Chí Minh, Việt Nam
+      Info: Ho Chi Minh City, Vietnam
 
 Profile: |
-  Tôi là sinh viên năm 4 ngành Công nghệ thông tin tại Đại học HUTECH, chuyên ngành Công nghệ phần mềm.
-  Trong quá trình học tập, tôi đã được tiếp cận và làm việc với nhiều ngôn ngữ lập trình như C, Java, C#, Python, HTML, CSS và Javascript.
-  Tôi có niềm yêu thích với lập trình web, đặc biệt là phát triển ứng dụng ASP.NET Core và các công nghệ web hiện đại.
-  Mục tiêu của tôi là trở thành một lập trình viên full-stack, có khả năng xây dựng các sản phẩm chất lượng và thân thiện với người dùng.
+  - Final-year Software Engineering student at HUTECH (GPA: 3.65/4.0) with strong full-stack development foundations
+  - Proficient in Front-end (React, HTML/CSS, JS) and Back-end (ASP.NET Core, Node.js, Java Spring Boot)
+  - Experienced in RESTful API development, Database design (SQL Server), and source control with Git
+  - Hands-on with deployment (Somee, GitHub Pages) and Agile teamwork
+  - Quick learner seeking an Intern/Junior Web Developer position to apply skills in real-world projects
 
 Experience:
-  - Employer: Dự án cá nhân và học tập
-    Place: TP. Hồ Chí Minh, Việt Nam
+  - Employer: Personal and Academic Projects
+    Place: Ho Chi Minh City, Vietnam
     Positions:
-      - Title: Lập trình viên ASP.NET Core
-        Date: 2024 - Nay
+      - Title: ASP.NET Core Developer
+        Date: 2024 - Present
         Details:
-          - Phát triển website quản lý giao dịch tiền mặt sử dụng WinForms và C#
-          - Xây dựng ứng dụng web bán hàng cá nhân với ASP.NET Core MVC
-          - Thiết kế cơ sở dữ liệu và xử lý logic nghiệp vụ trên SQL Server
-          - Triển khai website lên nền tảng Somee và GitHub Pages
+          - Developed a cash transaction management website using WinForms and C#
+          - Built a personal e-commerce web application with ASP.NET Core MVC
+          - Designed database schema and handled business logic on SQL Server
+          - Deployed websites to Somee and GitHub Pages
         Badges: ['C#', 'ASP.NET Core', 'SQL Server', 'Entity Framework', 'HTML', 'CSS', 'Javascript']
-      - Title: Lập trình viên Python – Dự án học thuật
-        Date: 2023
-        Details:
-          - Xây dựng ứng dụng chat client-server bằng TCP socket
-          - Xử lý giao tiếp qua JSON và đa luồng
-          - Phát triển giao diện người dùng bằng Windows Forms
-        Badges: ['Python', 'Socket', 'Multithreading', 'JSON', 'Windows Forms']
-  - Employer: Thực tập sinh (Dự kiến)
-    Place: TP. Hồ Chí Minh
-    Positions:
-      - Title: Web Developer Intern
+      - Title: Node.js Backend Developer
         Date: 2025
         Details:
-          - Mong muốn được tham gia môi trường thực tế để rèn luyện kỹ năng phát triển ứng dụng web
-          - Tích lũy thêm kinh nghiệm làm việc nhóm và quy trình Agile
-        Badges: ['ASP.NET Core', 'React', 'Git', 'Agile']
+          - Developed backend services for web applications using Node.js and Express.js
+          - Designed and implemented RESTful APIs
+          - Integrated databases and handled backend data processing
+        Badges: ['Node.js', 'Express', 'MongoDB', 'Git']
+      - Title: Java Backend Developer
+        Date: 2025
+        Details:
+          - Developed backend services for web applications using Java and Spring Boot
+          - Designed and implemented RESTful APIs
+          - Integrated databases and handled backend data processing
+        Badges: ['Java', 'Spring Boot', 'REST API', 'SQL']
 
 Education:
-  - Course: Cử nhân Công nghệ thông tin – Chuyên ngành Công nghệ phần mềm
-    Place: Đại học Công nghệ TP.HCM (HUTECH)
-    Date: 2021 - Nay
-    Details: Đã học qua các môn lập trình C, Java, C#, Python, ASP.NET Core, phát triển web và cơ sở dữ liệu.
+  - Course: Software Engineering (Web Application Development)
+    Place: Ho Chi Minh City University of Technology (HUTECH)
+    Date: 2022/09 – 2026/09
+    Details: Grade - Good
 
 References:
-  - Name: Giảng viên hướng dẫn
-    Relation: Giảng viên bộ môn Lập trình C# tại HUTECH
+  - Name: Supervisor
+    Relation: Lecturer of C# Programming at HUTECH
     Contacts:
       - Icon: fas fa-envelope
         Info: example@hutech.edu.vn
       - Icon: fas fa-map-marker-alt
-        Info: TP. Hồ Chí Minh, Việt Nam
-  - Name: Bạn học cùng nhóm dự án
-    Relation: Cộng sự trong các dự án học tập tại HUTECH
+        Info: Ho Chi Minh City, Vietnam
+  - Name: Project Teammate
+    Relation: Collaborator in academic projects at HUTECH
     Contacts:
       - Icon: fas fa-envelope
         Info: teammate@hutech.edu.vn
       - Icon: fas fa-map-marker-alt
-        Info: TP. Hồ Chí Minh, Việt Nam
+        Info: Ho Chi Minh City, Vietnam
 
 Skills:
-  - Family: Ngôn ngữ lập trình
+  - Family: Tech Stack
     Items:
-      - C
-      - Java
-      - C#
-      - Python
-      - HTML
-      - CSS
-      - Javascript
-      - SQL
-  - Family: Frameworks & Công nghệ
+      - "React.js, JavaScript, HTML/CSS"
+      - "ASP.NET Core, Node.js, Spring Boot"
+      - "SQL Server, MySQL, MongoDB"
+      - "RESTful APIs, GraphQL (Basic)"
+  - Family: Tools & Others
     Items:
-      - ASP.NET Core
-      - Entity Framework
-      - Flask
-      - React (cơ bản)
-  - Family: Công cụ phát triển
-    Items:
-      - Git / GitHub
-      - Visual Studio
-      - VS Code
-      - SQL Server
-      - Docker (cơ bản)
-  - Family: Kỹ năng khác
-    Items:
-      - Thiết kế giao diện với WinForms
-      - Làm việc nhóm theo mô hình Agile
-      - Viết tài liệu kỹ thuật và báo cáo dự án
+      - "Git, GitHub, Docker"
+      - "Entity Framework, Prisma"
+      - "Agile/Scrum, Debugging"
+      - "Technical Research"
 
 Languages:
-  - Name: Tiếng Việt
-    Level: Bản ngữ
-  - Name: Tiếng Anh
-    Level: Khá (đọc hiểu tài liệu kỹ thuật tốt)
+  - Name: Vietnamese
+    Level: Native
+  - Name: English
+    Level: Intermediate (Good reading comprehension)
 
 Diplomas:
-Diplomas:
-  - Chứng chỉ Lập trình Web (F8)
-  - Chứng chỉ Network Basic (Cisco)
-  - Chứng chỉ JavaScript Essentials 1 (Cisco)
-  - Chứng chỉ JavaScript Essentials 2 (Cisco)
+  - Web Programming Certificate (F8)
+  - Network Basic Certificate (Cisco)
+  - JavaScript Essentials 1 Certificate (Cisco)
+  - JavaScript Essentials 2 Certificate (Cisco)
 
 Projects:
   - Name: GuiAnNhien
     URL: https://github.com/TrungQNdev20/GuiAnNhien
-    Description: Dự án web với CSS
+    Description: Web project with CSS
   - Name: MotoGP
     URL: https://github.com/TrungQNdev20/MotoGP
-    Description: Trang web MotoGP
+    Description: MotoGP Website
   - Name: NguyenQuocTrung_3457_THMNM
     URL: https://github.com/TrungQNdev20/NguyenQuocTrung_3457_THMNM
-    Description: Thực Hành Mã Nguồn Mở
+    Description: Open Source Practice
   - Name: Profile-Trung
     URL: https://github.com/TrungQNdev20/Profile-Trung
-    Description: Trang profile cá nhân
+    Description: Personal Profile Page
   - Name: Trung
     URL: https://github.com/TrungQNdev20/Trung
-    Description: Dự án web cá nhân
+    Description: Personal Web Project
   - Name: TrungWeb
     URL: https://github.com/TrungQNdev20/TrungWeb
-    Description: Website cá nhân
+    Description: Personal Website
 
 Interests:
-  - Lập trình và công nghệ mới
-  - Thiết kế giao diện web
-  - Chơi guitar
-  - Du lịch
-  - Chụp ảnh
-  - Âm nhạc Lo-fi & Bossa Nova
+  - Programming and New Technologies
+  - Web UI Design
+  - Playing Guitar
+  - Traveling
+  - Photography
+  - Lo-fi & Bossa Nova Music
 BasicInfo:
   FirstName: Inês
   LastName: Almeida
