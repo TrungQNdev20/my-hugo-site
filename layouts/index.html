@@ -13,7 +13,7 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Modified to use local static css -->
-    <link rel="stylesheet" href="style.css" media="screen,print" />
+    <link rel="stylesheet" href="/style.css" media="screen,print" />
     <style>
         /* Avatar Customization: Oval shape and full fit */
         .avatar__container {
@@ -118,17 +118,6 @@
         background-color: rgba(0, 120, 215, 0.05);
     }
 
-    .editable-image {
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-
-    .editable-image:hover {
-        outline: 3px dashed #0078d7;
-        opacity: 0.8;
-        filter: grayscale(20%);
-    }
-
     .edit-controls {
         position: fixed;
         bottom: 20px;
@@ -153,11 +142,6 @@
         .editable-active {
             outline: none !important;
             background: none !important;
-        }
-
-        .editable-image {
-            outline: none !important;
-            filter: none !important;
         }
     }
 </style>
@@ -768,40 +752,6 @@
     <script>
         const editToggle = document.getElementById('edit-toggle');
 
-        // Image Upload Handling
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.accept = 'image/*';
-        fileInput.style.display = 'none';
-        document.body.appendChild(fileInput);
-
-        let currentImageElement = null;
-
-        fileInput.addEventListener('change', function (e) {
-            if (e.target.files && e.target.files[0] && currentImageElement) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    currentImageElement.src = e.target.result;
-                }
-                reader.readAsDataURL(e.target.files[0]);
-            }
-            // Reset for next use
-            fileInput.value = '';
-        });
-
-        function handleImageClick(e) {
-            if (!document.getElementById('edit-toggle').checked) return;
-
-            // Check if clicked element is an image we want to edit
-            // Use closest to handle clicks on wrappers if necessary, or direct target
-            if (e.target.classList.contains('avatar__img') || e.target.classList.contains('certificate__img')) {
-                currentImageElement = e.target;
-                fileInput.click();
-            }
-        }
-
-        document.addEventListener('click', handleImageClick);
-
         function setEditable(isEditable) {
             // Select all potentially editable text elements
             const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, li, .experience__date, .experience__position, .experience__company, .experience__place');
@@ -818,17 +768,8 @@
                 }
             });
 
-            // Handle Images
-            const imgElements = document.querySelectorAll('.avatar__img, .certificate__img');
-            imgElements.forEach(el => {
-                if (isEditable) {
-                    el.classList.add('editable-image');
-                    el.title = "Click to change image";
-                } else {
-                    el.classList.remove('editable-image');
-                    el.removeAttribute('title');
-                }
-            });
+            // Also handle images? (Advanced)
+            // For now, text editing is the main "MyCV" feature.
         }
 
         editToggle.addEventListener('change', (e) => {
@@ -839,3 +780,5 @@
         setEditable(editToggle.checked);
     </script>
 </body>
+
+</html>
