@@ -129,6 +129,57 @@
         filter: grayscale(20%);
     }
 
+    .certificate__item {
+        position: relative;
+    }
+
+    .delete-btn {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #ff4444;
+        color: white;
+        border: 2px solid white;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 20;
+        transition: transform 0.2s;
+    }
+
+    .delete-btn:hover {
+        background: #cc0000;
+        transform: scale(1.1);
+    }
+
+    .add-cert-btn {
+        width: 150px;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #ccc;
+        border-radius: 8px;
+        cursor: pointer;
+        color: #888;
+        transition: all 0.2s;
+        background: rgba(0, 0, 0, 0.02);
+        margin-bottom: 10px;
+    }
+
+    .add-cert-btn:hover {
+        border-color: #0078d7;
+        color: #0078d7;
+        background: rgba(0, 120, 215, 0.05);
+    }
+
     .edit-controls {
         position: fixed;
         bottom: 20px;
@@ -146,7 +197,10 @@
     }
 
     @media print {
-        .edit-controls {
+
+        .edit-controls,
+        .delete-btn,
+        .add-cert-btn {
             display: none !important;
         }
 
@@ -808,7 +862,7 @@
 
             elements.forEach(el => {
                 // Skip icons and some containers
-                if (el.querySelector('ul') || el.classList.contains('fas') || el.closest('.edit-controls')) return;
+                if (el.querySelector('ul') || el.classList.contains('fas') || el.closest('.edit-controls') || el.closest('.delete-btn')) return;
 
                 el.contentEditable = isEditable;
                 if (isEditable) {
@@ -829,6 +883,64 @@
                     el.removeAttribute('title');
                 }
             });
+
+            // CERTIFICATE MANAGEMENT
+            const certContainer = document.querySelector('.certificates');
+
+            // Delete Buttons
+            const certItems = document.querySelectorAll('.certificate__item');
+            if (isEditable) {
+                // Ensure every certificate item has a delete button
+                document.querySelectorAll('.certificate__item').forEach(item => {
+                    if (!item.querySelector('.delete-btn')) {
+                        const btn = document.createElement('div');
+                        btn.className = 'delete-btn';
+                        btn.innerHTML = '<i class="fas fa-times"></i>';
+                        btn.title = 'Remove certificate';
+                        btn.onclick = function (e) {
+                            e.stopPropagation();
+                            if (confirm('Remove this certificate?')) item.remove();
+                        };
+                        item.appendChild(btn);
+                    }
+                });
+            } else {
+                document.querySelectorAll('.delete-btn').forEach(btn => btn.remove());
+            }
+
+            // Add Button
+            let addBtn = document.getElementById('add-cert-btn');
+            if (isEditable) {
+                if (!addBtn) {
+                    addBtn = document.createElement('div');
+                    addBtn.id = 'add-cert-btn';
+                    addBtn.className = 'add-cert-btn';
+                    addBtn.innerHTML = '<i class="fas fa-plus" style="font-size: 2rem; margin-bottom: 10px;"></i><span>Add Cert</span>';
+                    addBtn.onclick = function () {
+                        const newCert = document.createElement('div');
+                        newCert.className = 'certificate__item';
+                        newCert.innerHTML = `
+                            <img src="https://via.placeholder.com/300x200?text=Upload+Image" alt="New Certificate" class="certificate__img editable-image" title="Click to change image">
+                            <p class="editable-active" contenteditable="true">New Certificate Name</p>
+                        `;
+                        // Add delete button to new cert
+                        const delBtn = document.createElement('div');
+                        delBtn.className = 'delete-btn';
+                        delBtn.innerHTML = '<i class="fas fa-times"></i>';
+                        delBtn.onclick = function (e) {
+                            e.stopPropagation();
+                            if (confirm('Remove this certificate?')) newCert.remove();
+                        };
+                        newCert.appendChild(delBtn);
+
+                        // Insert before the Add button
+                        certContainer.insertBefore(newCert, addBtn);
+                    };
+                    certContainer.appendChild(addBtn);
+                }
+            } else {
+                if (addBtn) addBtn.remove();
+            }
         }
 
         editToggle.addEventListener('change', (e) => {
@@ -839,3 +951,5 @@
         setEditable(editToggle.checked);
     </script>
 </body>
+
+</html>
