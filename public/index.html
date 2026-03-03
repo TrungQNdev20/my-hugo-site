@@ -2,6 +2,7 @@
 <html lang="vi">
 
 <head>
+	<meta name="generator" content="Hugo 0.151.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nguyễn Quốc Trung - CV</title>
@@ -12,17 +13,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Modified to use local static css -->
-    <link rel="stylesheet" href="style.css" media="screen,print" />
+    
+    <link rel="stylesheet" href="/style.css" media="screen,print" />
     <style>
-        /* Avatar Customization: Oval shape and full fit */
+         
         .avatar__container {
             width: 200px !important;
-            /* Set a reasonable width */
+             
             height: 275px !important;
-            /* Set height > width for oval */
+             
             border-radius: 50% !important;
-            /* Oval shape */
+             
             overflow: hidden;
             margin: 0 auto 1.5rem auto;
         }
@@ -31,13 +32,13 @@
             width: 80% !important;
             height: 80% !important;
             object-fit: cover !important;
-            /* Ensure image covers the oval area without distortion */
+             
         }
     </style>
 </head>
 
 <style>
-    /* Adjust base font size to better fit current layout */
+     
     html {
         font-size: 16px;
     }
@@ -47,7 +48,7 @@
         line-height: 1.5;
     }
 
-    /* Scale main heading and section titles */
+     
     .mainHeading {
         font-size: 2.4rem;
     }
@@ -68,17 +69,17 @@
         font-size: 1.1rem;
     }
 
-    /* Make sidebar text slightly larger */
+     
     .content__right {
         font-size: 0.95rem;
     }
 
-    /* Certificates images and other small text adjustments */
+     
     .certificate__img {
         max-height: 400px;
     }
 
-    /* Responsive adjustments: reduce sizes on small screens */
+     
     @media (max-width: 1200px) {
         html {
             font-size: 15px;
@@ -111,80 +112,18 @@
         }
     }
 
-    /* Edit Mode Styles */
+     
     .editable-active:hover {
         outline: 2px dashed #0078d7;
         cursor: text;
         background-color: rgba(0, 120, 215, 0.05);
     }
 
-    .editable-image {
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-
-    .editable-image:hover {
-        outline: 3px dashed #0078d7;
-        opacity: 0.8;
-        filter: grayscale(20%);
-    }
-
-    .certificate__item {
-        position: relative;
-    }
-
-    .delete-btn {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background: #ff4444;
-        color: white;
-        border: 2px solid white;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        z-index: 20;
-        transition: transform 0.2s;
-    }
-
-    .delete-btn:hover {
-        background: #cc0000;
-        transform: scale(1.1);
-    }
-
-    .add-cert-btn {
-        width: 150px;
-        min-height: 180px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border: 2px dashed #ccc;
-        border-radius: 8px;
-        cursor: pointer;
-        color: #888;
-        transition: all 0.2s;
-        background: rgba(0, 0, 0, 0.02);
-        margin-bottom: 10px;
-    }
-
-    .add-cert-btn:hover {
-        border-color: #0078d7;
-        color: #0078d7;
-        background: rgba(0, 120, 215, 0.05);
-    }
-
     .edit-controls {
         position: fixed;
         bottom: 20px;
         left: 20px;
-        /* Left side to not conflict with PDF button */
+         
         background: white;
         padding: 15px;
         border-radius: 8px;
@@ -197,21 +136,13 @@
     }
 
     @media print {
-
-        .edit-controls,
-        .delete-btn,
-        .add-cert-btn {
+        .edit-controls {
             display: none !important;
         }
 
         .editable-active {
             outline: none !important;
             background: none !important;
-        }
-
-        .editable-image {
-            outline: none !important;
-            filter: none !important;
         }
     }
 </style>
@@ -306,6 +237,41 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        /* Projects styling - match other sections, no framed box */
+       /* Projects styling - match other sections, use bullet list */
+.project { display:block; margin:0; }
+
+.project-list {
+  margin: 0 0 1rem 1.5em; /* keep indent similar to overview bullets */
+  padding: 0;
+}
+
+.project__item {
+  padding: 0.25rem 0;
+  margin: 0 0 0.5rem 0;
+}
+
+.project__title {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #333; /* same as section titles */
+}
+
+.project__title a { color: inherit; text-decoration: none; }
+
+.project__meta {
+  color: #444;
+  font-size: 0.95rem;
+  margin: 2px 0;
+}
+
+.project__desc {
+  color: #333;
+  margin: 6px 0 0 0;
+  font-size: 0.95rem;
+}
+
         :root {
             --code-font-size: 1rem;
         }
@@ -329,13 +295,13 @@
             font-size: var(--code-font-size);
         }
     </style>
-    <!-- Download PDF Button -->
+    
     <style>
         @media print {
             @page {
                 size: A4;
                 margin: 0mm;
-                /* Minimal margins to maximize space */
+                 
             }
 
             html,
@@ -346,7 +312,7 @@
                 padding: 0 !important;
                 background-color: #fff !important;
                 overflow: hidden;
-                /* Prevent scrollbars in print */
+                 
             }
 
             .content {
@@ -355,20 +321,20 @@
                 margin: 0 !important;
                 padding: 0 !important;
                 position: relative !important;
-                /* Anchor for sidebar */
+                 
                 box-shadow: none !important;
             }
 
             .content__left {
                 width: 58% !important;
-                /* Reduced to give safe space to right col */
+                 
                 padding: 2rem 1rem 2rem 2rem !important;
                 float: left;
             }
 
             .content__right {
                 width: 42% !important;
-                /* Increased slightly to fit avatar */
+                 
                 position: absolute !important;
                 right: 0 !important;
                 top: 0 !important;
@@ -379,7 +345,7 @@
                 -webkit-print-color-adjust: exact;
             }
 
-            /* Compact fonts for single-page fit */
+             
             html {
                 font-size: 10px !important;
             }
@@ -401,7 +367,7 @@
                 margin-bottom: 5px !important;
             }
 
-            /* Compact Experience Section */
+             
             .experience__item {
                 margin-bottom: 8px !important;
                 break-inside: avoid;
@@ -412,11 +378,11 @@
                 margin-bottom: 2px !important;
             }
 
-            /* Certificates Grid - Inline-Block is safer for Print than Flex */
+             
             .certificates {
                 display: block !important;
                 font-size: 0;
-                /* Remove whitespace between inline-blocks */
+                 
                 margin-top: 5px !important;
                 width: 100% !important;
             }
@@ -429,7 +395,7 @@
                 text-align: center !important;
             }
 
-            /* Add space between columns */
+             
             .certificate__item:nth-child(odd) {
                 margin-right: 2% !important;
             }
@@ -444,22 +410,31 @@
                 width: auto !important;
                 max-width: 100% !important;
                 max-height: 80px !important;
-                /* Smaller images to fit page */
+                 
                 border: 1px solid #ddd !important;
                 border-radius: 4px !important;
                 box-shadow: none !important;
                 margin-bottom: 3px !important;
             }
+            /* reduce sidebar certificates size and layout in print */
+            .certificates-sidebar {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 4px !important;
+            }
+            .certificates-sidebar .certificate__img {
+                max-height: 60px !important;
+            }
 
             .certificate__item p {
                 font-size: 0.85rem !important;
-                /* Restore font size */
+                 
                 line-height: 1.2 !important;
                 color: #555 !important;
                 margin: 0 !important;
             }
 
-            /* Fix Right Column Height */
+             
             .content__right {
                 height: 100% !important;
                 position: absolute !important;
@@ -470,8 +445,8 @@
                 padding: 1.5rem 1rem !important;
             }
 
-            /* Adjust Avatar for Compact Layout */
-            /* Adjust Avatar for Compact Layout */
+             
+             
             .sideSection.avatar,
             .avatar {
                 display: block !important;
@@ -479,7 +454,7 @@
                 opacity: 1 !important;
                 height: auto !important;
                 margin-bottom: 2rem !important;
-                /* increased margin */
+                 
                 page-break-inside: avoid !important;
                 break-inside: avoid !important;
                 z-index: 9999 !important;
@@ -490,20 +465,20 @@
                 justify-content: center !important;
                 align-items: center !important;
                 visibility: visible !important;
-                /* Force visibility */
+                 
                 width: 170px !important;
-                /* Reduced size slightly */
+                 
                 height: 235px !important;
-                /* Reduced size slightly */
+                 
                 border-radius: 50% !important;
                 overflow: hidden;
                 margin: 0 auto 1.5rem auto;
                 background-color: transparent !important;
-                /* Verify background */
+                 
                 position: relative !important;
                 left: 70px !important;
-                /* Move right matching user preference */
-                /* Move left to align/center better */
+                 
+                 
                 z-index: 10000 !important;
             }
 
@@ -511,9 +486,9 @@
                 display: block !important;
                 visibility: visible !important;
                 width: 85% !important;
-                /* Reduced image size inside frame */
+                 
                 height: 85% !important;
-                /* Reduced image size inside frame */
+                 
                 object-fit: cover !important;
                 border-radius: 50% !important;
             }
@@ -540,7 +515,7 @@
         });
     </script>
 
-    <!-- Edit Controls -->
+    
     <div class="edit-controls no-print">
         <label style="display:flex;align-items:center;cursor:pointer;font-weight:bold;">
             <input type="checkbox" id="edit-toggle" style="margin-right:10px; transform: scale(1.5);">
@@ -551,11 +526,11 @@
 
     <div class="content">
 
-        <!-- LEFT COLUMN -->
+        
         <div class="content__left">
             <h1 class="mainHeading">Nguyen Quoc <span>Trung</span></h1>
 
-            <!-- OVERVIEW -->
+            
             <div id="overview" class="section">
                 <div class="section__heading">
                     <h2 class="section__title">Overview</h2>
@@ -580,7 +555,42 @@
                 </div>
             </div>
 
-            <!-- EXPERIENCE -->
+            
+            <div id="projects" class="section">
+                <div class="section__heading">
+                    <h2 class="section__title">Projects</h2>
+                </div>
+                <div class="section__content">
+                    <ul class="project-list project">
+                        <li class="project__item">
+                            <h3 class="project__title">2FA TOTP Java GUI</h3>
+                            <div class="project__meta"> Link Github: <a href="https://github.com/harryitc/2fa-java-gui" target="_blank">2FA TOTP Java
+                                GUI</a></div>
+                            <div class="project__meta"><strong>Role:</strong> Developer — UI and TOTP logic</div>
+                            <div class="project__meta"><strong>Tech:</strong> Java, Swing, TOTP (RFC6238)</div>
+                            <div class="project__desc"><strong>Challenges:</strong> time synchronization and user setup errors when
+                                registering tokens. </div>
+                             <div class="project__desc"><strong>Solution:</strong> implemented RFC6238-compliant TOTP, added configurable
+                                time-step and clearer QR-code onboarding to reduce mismatches.</div>
+                        </li>
+                
+                        <li class="project__item">
+                            <h3 class="project__title">Elegant Suits Web 3D</h3>
+                            <div class="project__meta"> Link Github: <a href="https://github.com/KhoangrTroongs/DACN_ElegantSuits.git" target="_blank">Elegant Suits
+                                Web 3D</a></div>
+                            <div class="project__meta"><strong>Role:</strong> Backend Developer — ASP.NET Core</div>
+                            <div class="project__meta"><strong>Tech:</strong> ASP.NET Core, C#, SQL Server</div>
+                            <div class="project__desc"><strong>Challenges:</strong> serving large 3D assets reliably and keeping backend
+                                responsive under concurrent requests. </div>
+                            <div class="project__desc"><strong>Solution:</strong> implemented efficient streaming
+                                endpoints, added server-side caching and CDN-friendly asset packaging, and designed APIs for progressive
+                                asset loading to reduce latency.</div>
+                        </li>
+                
+                    </ul>
+                </div>
+            </div>
+
             <div id="experience" class="section">
                 <div class="section__heading">
                     <h2 class="section__title">Experience</h2>
@@ -591,7 +601,7 @@
                         <div class="experience__item">
                             <div class="experience__header">
                                 <h3 class="experience__company">Personal and Academic Projects</h3>
-                                <h3 class="experience__place">Ho Chi Minh City, Vietnam</h3>
+                                <h3 class="experience__place">HCM City, Vietnam</h3>
                             </div>
 
                             <div class="experience__job">
@@ -674,7 +684,7 @@
                 </div>
             </div>
 
-            <!-- EDUCATION -->
+            
             <div id="education" class="section">
                 <div class="section__heading">
                     <h2 class="section__title">Education</h2>
@@ -689,93 +699,103 @@
                 </div>
             </div>
 
-            <!-- CERTIFICATES -->
-            <div id="certificates" class="section">
-                <div class="section__heading">
-                    <h2 class="section__title">Certificates</h2>
-                </div>
-                <div class="section__content">
-                    <div class="certificates">
-                        <div class="certificate__item">
-                            <img src="img/HTMLCSSCertificate.png" alt="Web Programming Certificate (F8)"
-                                class="certificate__img">
-                            <p>Web Programming Certificate (F8)</p>
-                        </div>
-                        <div class="certificate__item">
-                            <img src="img/Cisco.png" alt="Network Basic Certificate (Cisco)" class="certificate__img">
-                            <p>Network Basic Certificate (Cisco)</p>
-                        </div>
-                        <div class="certificate__item">
-                            <img src="img/js1.png" alt="JavaScript Essentials 1 Certificate (Cisco)"
-                                class="certificate__img">
-                            <p>JavaScript Essentials 1 Certificate (Cisco)</p>
-                        </div>
-                        <div class="certificate__item">
-                            <img src="img/js2.png" alt="JavaScript Essentials 2 Certificate (Cisco)"
-                                class="certificate__img">
-                            <p>JavaScript Essentials 2 Certificate (Cisco)</p>
-                        </div>
-                        <div class="certificate__item">
-                            <img src="img/chungchiNode.png" alt="Node.js Certificate (CyberSoft)"
-                                class="certificate__img">
-                            <p>Node.js Certificate (CyberSoft)</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            
+            
         </div>
 
-        <!-- RIGHT COLUMN -->
+        
         <div class="content__right">
 
-            <!-- AVATAR -->
+            
             <div class="sideSection avatar">
                 <div class="avatar__container">
                     <img class="avatar__img" src="img/avatar_new.png" alt="Avatar">
                 </div>
             </div>
+                    <div class="sideSection contact">
+                        <ul>
+                            <li class="contact__item"><i class="fas fa-phone"></i><span>+84 0933356215</span></li>
+                            <li class="contact__item"><i class="fas fa-envelope"></i><span>paulonguyen3@gmail.com</span></li>
+                            <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link"
+                                        href="https://github.com/TrungQNdev20" target="_blank">TrungQNdev20</a></span></li>
+                            <li class="contact__item"><i class="fas fa-map-marker-alt"></i><span>Ho Chi Minh City,
+                                    Vietnam</span></li>
+                        </ul>
+                    </div>
 
-            <!-- CONTACT -->
-            <div class="sideSection contact">
-                <ul>
-                    <li class="contact__item"><i class="fas fa-phone"></i><span>+84 0933356215</span></li>
-                    <li class="contact__item"><i class="fas fa-envelope"></i><span>paulonguyen3@gmail.com</span></li>
-                    <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link"
-                                href="https://github.com/TrungQNdev20" target="_blank">TrungQNdev20</a></span></li>
-                    <li class="contact__item"><i class="fas fa-map-marker-alt"></i><span>Ho Chi Minh City,
-                            Vietnam</span></li>
-                </ul>
-            </div>
+                    <div class="sideSection">
+                        <div class="sideSection__heading">
+                            <h2 class="sideSection__title">Skills</h2>
+                        </div>
+                        <div class="sideSection__content">
+                            <div class="skills">
+                                <div class="skills__group">
+                                    <h3 class="skills__heading">Frontend</h3>
+                                    <ul>
+                                        <li>React.js</li>
+                                        <li>JavaScript</li>
+                                        <li>HTML/CSS</li>
+                                    </ul>
+                                </div>
+                                <div class="skills__group">
+                                    <h3 class="skills__heading">Backend</h3>
+                                    <ul>
+                                        <li>ASP.NET Core</li>
+                                        <li>Node.js</li>
+                                        <li>Spring Boot</li>
+                                    </ul>
+                                </div>
+                                <div class="skills__group">
+                                    <h3 class="skills__heading">Databases & APIs</h3>
+                                    <ul>
+                                        <li>SQL Server, MySQL, MongoDB</li>
+                                        <li>RESTful APIs</li>
+                                        <li>GraphQL (Basic)</li>
+                                    </ul>
+                                </div>
+                                <div class="skills__group">
+                                    <h3 class="skills__heading">Tools & Others</h3>
+                                    <ul>
+                                        <li>Git, GitHub, Docker</li>
+                                        <li>Entity Framework, Prisma</li>
+                                        <li>Agile/Scrum, Debugging</li>
+                                        <li>Technical Research</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- SKILLS -->
-            <div class="sideSection">
-                <div class="sideSection__heading">
-                    <h2 class="sideSection__title">Skills</h2>
-                </div>
-                <div class="sideSection__content">
-                    <ul class="skills">
-                        <li>
-                            <ul class="skills__group">
-                                <span>Tech Stack</span><br>
-                                <li>React.js, JavaScript, HTML/CSS</li>
-                                <li>ASP.NET Core, Node.js, Spring Boot</li>
-                                <li>SQL Server, MySQL, MongoDB</li>
-                                <li>RESTful APIs, GraphQL (Basic)</li>
-                            </ul>
-                            <ul class="skills__group">
-                                <span>Tools & Others</span><br>
-                                <li>Git, GitHub, Docker</li>
-                                <li>Entity Framework, Prisma</li>
-                                <li>Agile/Scrum, Debugging</li>
-                                <li>Technical Research</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- LANGUAGES -->
+                    <div class="sideSection">
+                        <div class="sideSection__heading">
+                            <h2 class="sideSection__title">Certificates</h2>
+                        </div>
+                        <div class="sideSection__content certificates-sidebar">
+                            <div class="certificate__item">
+                                <img src="img/HTMLCSSCertificate.png" alt="Web Programming Certificate (F8)" class="certificate__img">
+                                <p>Web Programming Certificate (F8)</p>
+                            </div>
+                            <div class="certificate__item">
+                                <img src="img/Cisco.png" alt="Network Basic Certificate (Cisco)" class="certificate__img">
+                                <p>Network Basic Certificate (Cisco)</p>
+                            </div>
+                            <div class="certificate__item">
+                                <img src="img/js1.png" alt="JavaScript Essentials 1 Certificate (Cisco)" class="certificate__img">
+                                <p>JavaScript Essentials 1 Certificate (Cisco)</p>
+                            </div>
+                            <div class="certificate__item">
+                                <img src="img/js2.png" alt="JavaScript Essentials 2 Certificate (Cisco)" class="certificate__img">
+                                <p>JavaScript Essentials 2 Certificate (Cisco)</p>
+                            </div>
+                            <div class="certificate__item">
+                                <img src="img/chungchiNode.png" alt="Node.js Certificate (CyberSoft)" class="certificate__img">
+                                <p>Node.js Certificate (CyberSoft)</p>
+                            </div>
+                        </div>
+                    </div>
+           
+            
             <div class="sideSection">
                 <div class="sideSection__heading">
                     <h2 class="sideSection__title">Languages</h2>
@@ -794,75 +814,20 @@
                 </div>
             </div>
 
-            <!-- PROJECTS -->
-            <div class="sideSection">
-                <div class="sideSection__heading">
-                    <h2 class="sideSection__title">Projects</h2>
-                </div>
-                <div class="sideSection__content">
-                    <ul>
-                        <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link"
-                                    href="https://github.com/harryitc/2fa-java-gui" target="_blank">2FA TOTP Java
-                                    GUI</a></span></li>
-                        <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link"
-                                    href="https://github.com/KhoangrTroongs/DACN_ElegantSuits.git"
-                                    target="_blank">Elegant Suits Web 3D</a></span></li>
-                        <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link"
-                                    href="https://github.com/TrungQNdev20/Innocar.git"
-                                    target="_blank">Innocar</a></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
     </div>
 
-    <!-- Script to handle Editing -->
+    
     <script>
         const editToggle = document.getElementById('edit-toggle');
 
-        // Image Upload Handling
-        const fileInput = document.createElement('input');
-        fileInput.type = 'file';
-        fileInput.accept = 'image/*';
-        fileInput.style.display = 'none';
-        document.body.appendChild(fileInput);
-
-        let currentImageElement = null;
-
-        fileInput.addEventListener('change', function (e) {
-            if (e.target.files && e.target.files[0] && currentImageElement) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    currentImageElement.src = e.target.result;
-                }
-                reader.readAsDataURL(e.target.files[0]);
-            }
-            // Reset for next use
-            fileInput.value = '';
-        });
-
-        function handleImageClick(e) {
-            if (!document.getElementById('edit-toggle').checked) return;
-
-            // Check if clicked element is an image we want to edit
-            // Use closest to handle clicks on wrappers if necessary, or direct target
-            if (e.target.classList.contains('avatar__img') || e.target.classList.contains('certificate__img')) {
-                currentImageElement = e.target;
-                fileInput.click();
-            }
-        }
-
-        document.addEventListener('click', handleImageClick);
-
         function setEditable(isEditable) {
-            // Select all potentially editable text elements
+            
             const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, li, .experience__date, .experience__position, .experience__company, .experience__place');
 
             elements.forEach(el => {
-                // Skip icons and some containers
-                if (el.querySelector('ul') || el.classList.contains('fas') || el.closest('.edit-controls') || el.closest('.delete-btn')) return;
+                
+                if (el.querySelector('ul') || el.classList.contains('fas') || el.closest('.edit-controls')) return;
 
                 el.contentEditable = isEditable;
                 if (isEditable) {
@@ -872,82 +837,15 @@
                 }
             });
 
-            // Handle Images
-            const imgElements = document.querySelectorAll('.avatar__img, .certificate__img');
-            imgElements.forEach(el => {
-                if (isEditable) {
-                    el.classList.add('editable-image');
-                    el.title = "Click to change image";
-                } else {
-                    el.classList.remove('editable-image');
-                    el.removeAttribute('title');
-                }
-            });
-
-            // CERTIFICATE MANAGEMENT
-            const certContainer = document.querySelector('.certificates');
-
-            // Delete Buttons
-            const certItems = document.querySelectorAll('.certificate__item');
-            if (isEditable) {
-                // Ensure every certificate item has a delete button
-                document.querySelectorAll('.certificate__item').forEach(item => {
-                    if (!item.querySelector('.delete-btn')) {
-                        const btn = document.createElement('div');
-                        btn.className = 'delete-btn';
-                        btn.innerHTML = '<i class="fas fa-times"></i>';
-                        btn.title = 'Remove certificate';
-                        btn.onclick = function (e) {
-                            e.stopPropagation();
-                            if (confirm('Remove this certificate?')) item.remove();
-                        };
-                        item.appendChild(btn);
-                    }
-                });
-            } else {
-                document.querySelectorAll('.delete-btn').forEach(btn => btn.remove());
-            }
-
-            // Add Button
-            let addBtn = document.getElementById('add-cert-btn');
-            if (isEditable) {
-                if (!addBtn) {
-                    addBtn = document.createElement('div');
-                    addBtn.id = 'add-cert-btn';
-                    addBtn.className = 'add-cert-btn';
-                    addBtn.innerHTML = '<i class="fas fa-plus" style="font-size: 2rem; margin-bottom: 10px;"></i><span>Add Cert</span>';
-                    addBtn.onclick = function () {
-                        const newCert = document.createElement('div');
-                        newCert.className = 'certificate__item';
-                        newCert.innerHTML = `
-                            <img src="https://via.placeholder.com/300x200?text=Upload+Image" alt="New Certificate" class="certificate__img editable-image" title="Click to change image">
-                            <p class="editable-active" contenteditable="true">New Certificate Name</p>
-                        `;
-                        // Add delete button to new cert
-                        const delBtn = document.createElement('div');
-                        delBtn.className = 'delete-btn';
-                        delBtn.innerHTML = '<i class="fas fa-times"></i>';
-                        delBtn.onclick = function (e) {
-                            e.stopPropagation();
-                            if (confirm('Remove this certificate?')) newCert.remove();
-                        };
-                        newCert.appendChild(delBtn);
-
-                        // Insert before the Add button
-                        certContainer.insertBefore(newCert, addBtn);
-                    };
-                    certContainer.appendChild(addBtn);
-                }
-            } else {
-                if (addBtn) addBtn.remove();
-            }
+            
+            
         }
 
         editToggle.addEventListener('change', (e) => {
             setEditable(e.target.checked);
         });
 
-        // Initialize
+        
         setEditable(editToggle.checked);
     </script>
 </body>
