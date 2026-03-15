@@ -75,7 +75,7 @@
 
     /* Certificates images and other small text adjustments */
     .certificate__img {
-        max-height: 400px;
+        max-height: 150px;
     }
 
     /* Responsive adjustments: reduce sizes on small screens */
@@ -194,13 +194,19 @@
         .certificates {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            gap: 15px;
+            justify-content: flex-start;
         }
 
         .certificate__item {
             text-align: center;
-            max-width: 300px;
+            max-width: 140px;
+        }
+
+        .certificate__item p {
+            font-size: 0.85rem;
+            margin-top: 5px;
+            line-height: 1.2;
         }
 
         .certificate__img {
@@ -217,20 +223,26 @@
         }
 
         .certificates-sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
         }
 
         .certificates-sidebar .certificate__item {
             text-align: center;
-            max-width: 100%;
+            width: 100%;
+        }
+
+        .certificates-sidebar .certificate__item p {
+            font-size: 0.75rem;
+            margin-top: 3px;
+            line-height: 1.1;
         }
 
         .certificates-sidebar .certificate__img {
             width: 100%;
             height: auto;
-            max-height: 80px;
+            max-height: 60px;
             object-fit: contain;
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -408,8 +420,8 @@
                 visibility: visible !important;
                 opacity: 1 !important;
                 height: auto !important;
-                margin-bottom: 2rem !important;
-                /* increased margin */
+                margin-bottom: 0.5rem !important;
+                /* reduced margin */
                 page-break-inside: avoid !important;
                 break-inside: avoid !important;
                 z-index: 9999 !important;
@@ -421,13 +433,13 @@
                 align-items: center !important;
                 visibility: visible !important;
                 /* Force visibility */
-                width: 170px !important;
-                /* Reduced size slightly */
-                height: 235px !important;
-                /* Reduced size slightly */
+                width: 140px !important;
+                /* Reduced size heavily */
+                height: 195px !important;
+                /* Reduced size heavily */
                 border-radius: 50% !important;
                 overflow: hidden;
-                margin: 0 auto 1.5rem auto;
+                margin: 0 auto 0.5rem auto;
                 background-color: transparent !important;
                 /* Verify background */
                 position: relative !important;
@@ -446,6 +458,24 @@
                 /* Reduced image size inside frame */
                 object-fit: cover !important;
                 border-radius: 50% !important;
+            }
+
+            .certificates-sidebar {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 5px !important;
+            }
+            .certificates-sidebar .certificate__item {
+                margin-bottom: 5px !important;
+            }
+            .certificates-sidebar .certificate__item p {
+                font-size: 0.65rem !important;
+                margin-top: 2px !important;
+                line-height: 1.1 !important;
+            }
+            .certificates-sidebar .certificate__img {
+                max-height: 75px !important;
+                margin-bottom: 0 !important;
             }
         }
     </style>
@@ -507,6 +537,60 @@
                             apply skills in real-world
                             projects</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- PROJECTS -->
+            <div id="projects" class="section">
+                <div class="section__heading">
+                    <h2 class="section__title">Projects</h2>
+                </div>
+                <div class="section__content">
+                    <div class="experience">
+
+                        <div class="experience__item">
+                            <div class="experience__header">
+                                <h3 class="experience__company"><a href="https://github.com/KhoangrTroongs/doAn_J2EE.git" target="_blank" style="text-decoration: none; color: #0078d7;">Cake store 3D</a></h3>
+                            </div>
+                            <div class="experience__job">
+                                <ul>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Role:</span> Backend Developer</li>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Tech:</span> Java (Spring Boot), HTML/CSS/JS, MySQL (Laragon)</li>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Challenges:</span> designing a robust shopping cart system and managing complex product data efficiently.</li>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Solution:</span> implemented scalable RESTful APIs with Spring Boot, optimized database queries with MySQL via Laragon, and ensured smooth integration with frontend frameworks.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience__item">
+                            <div class="experience__header">
+                                <h3 class="experience__company"><a href="https://github.com/harryitc/2fa-java-gui" target="_blank" style="text-decoration: none; color: #0078d7;">2FA TOTP Java GUI</a></h3>
+                            </div>
+                            <div class="experience__job">
+                                <ul>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Role:</span> Developer — UI and TOTP logic</li>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Tech:</span> Java, Swing, TOTP (RFC6238)</li>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Challenges:</span> time synchronization and user setup errors when registering tokens.</li>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Solution:</span> implemented RFC6238-compliant TOTP, added configurable time-step and clearer QR-code onboarding to reduce mismatches.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience__item">
+                            <div class="experience__header">
+                                <h3 class="experience__company"><a href="https://github.com/KhoangrTroongs/DACN_ElegantSuits.git" target="_blank" style="text-decoration: none; color: #0078d7;">Elegant Suits Web 3D</a></h3>
+                            </div>
+                            <div class="experience__job">
+                                <ul>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Role:</span> Backend Developer — ASP.NET Core</li>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Tech:</span> ASP.NET Core, C#, SQL Server</li>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Challenges:</span> serving large 3D assets reliably and keeping backend responsive under concurrent requests.</li>
+                                    <li class="experience__bullet"><span style="font-weight: 600; color: #333;">Solution:</span> implemented efficient streaming endpoints, added server-side caching and CDN-friendly asset packaging, and designed APIs for progressive asset loading to reduce latency.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
@@ -619,41 +703,6 @@
                 </div>
             </div>
 
-            <!-- CERTIFICATES -->
-            <div id="certificates" class="section">
-                <div class="section__heading">
-                    <h2 class="section__title">Certificates</h2>
-                </div>
-                <div class="section__content">
-                    <div class="certificates">
-                        <div class="certificate__item">
-                            <img src="img/HTMLCSSCertificate.png" alt="Web Programming Certificate (F8)"
-                                class="certificate__img">
-                            <p>Web Programming Certificate (F8)</p>
-                        </div>
-                        <div class="certificate__item">
-                            <img src="img/Cisco.png" alt="Network Basic Certificate (Cisco)" class="certificate__img">
-                            <p>Network Basic Certificate (Cisco)</p>
-                        </div>
-                        <div class="certificate__item">
-                            <img src="img/js1.png" alt="JavaScript Essentials 1 Certificate (Cisco)"
-                                class="certificate__img">
-                            <p>JavaScript Essentials 1 Certificate (Cisco)</p>
-                        </div>
-                        <div class="certificate__item">
-                            <img src="img/js2.png" alt="JavaScript Essentials 2 Certificate (Cisco)"
-                                class="certificate__img">
-                            <p>JavaScript Essentials 2 Certificate (Cisco)</p>
-                        </div>
-                        <div class="certificate__item">
-                            <img src="img/chungchiNode.png" alt="Node.js Certificate (CyberSoft)"
-                                class="certificate__img">
-                            <p>Node.js Certificate (CyberSoft)</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- RIGHT COLUMN -->
@@ -684,22 +733,22 @@
                     <h2 class="sideSection__title">Skills</h2>
                 </div>
                 <div class="sideSection__content">
-                    <ul class="skills">
-                        <li>
-                            <ul class="skills__group">
-                                <span>Tech Stack</span><br>
-                                <li>React.js, JavaScript, HTML/CSS</li>
-                                <li>ASP.NET Core, Node.js, Spring Boot</li>
-                                <li>SQL Server, MySQL, MongoDB</li>
-                                <li>RESTful APIs, GraphQL (Basic)</li>
-                            </ul>
-                            <ul class="skills__group">
-                                <span>Tools & Others</span><br>
-                                <li>Git, GitHub, Docker</li>
-                                <li>Entity Framework, Prisma</li>
-                                <li>Agile/Scrum, Debugging</li>
-                                <li>Technical Research</li>
-                            </ul>
+                    <ul class="skills" style="list-style-type: none; padding-left: 0; margin-top: 0;">
+                        <li style="margin-bottom: 8px;">
+                            <span style="font-weight: 700; color: #333;">Frontend</span><br>
+                            React.js, JavaScript, HTML/CSS
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <span style="font-weight: 700; color: #333;">Backend</span><br>
+                            ASP.NET Core, Node.js, Spring Boot
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <span style="font-weight: 700; color: #333;">Databases & APIs</span><br>
+                            SQL Server, MySQL, MongoDB, RESTful APIs, GraphQL (Basic)
+                        </li>
+                        <li style="margin-bottom: 5px;">
+                            <span style="font-weight: 700; color: #333;">Tools & Others</span><br>
+                            Git, GitHub, Docker, Entity Framework, Prisma, Agile/Scrum, Debugging, Technical Research
                         </li>
                     </ul>
                 </div>
@@ -724,24 +773,38 @@
                 </div>
             </div>
 
-            <!-- PROJECTS -->
+            <!-- CERTIFICATES -->
             <div class="sideSection">
                 <div class="sideSection__heading">
-                    <h2 class="sideSection__title">Projects</h2>
+                    <h2 class="sideSection__title">Certificates</h2>
                 </div>
                 <div class="sideSection__content">
-                    <ul>
-                        <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link"
-                                    href="https://github.com/harryitc/2fa-java-gui" target="_blank">2FA TOTP Java
-                                    GUI</a></span></li>
-                        <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link"
-                                    href="https://github.com/KhoangrTroongs/DACN_ElegantSuits.git"
-                                    target="_blank">Elegant Suits Web 3D</a></span></li>
-                        <li class="contact__item"><i class="fas fa-globe"></i><span><a class="contact__link"
-                                    href="https://github.com/TrungQNdev20/Innocar.git"
-                                    target="_blank">Innocar</a></span>
-                        </li>
-                    </ul>
+                    <div class="certificates-sidebar">
+                        <div class="certificate__item">
+                            <img src="img/HTMLCSSCertificate.png" alt="Web Programming Certificate (F8)"
+                                class="certificate__img">
+                            <p>Web Programming Certificate (F8)</p>
+                        </div>
+                        <div class="certificate__item">
+                            <img src="img/Cisco.png" alt="Network Basic Certificate (Cisco)" class="certificate__img">
+                            <p>Network Basic Certificate (Cisco)</p>
+                        </div>
+                        <div class="certificate__item">
+                            <img src="img/js1.png" alt="JavaScript Essentials 1 Certificate (Cisco)"
+                                class="certificate__img">
+                            <p>JavaScript Essentials 1 Certificate (Cisco)</p>
+                        </div>
+                        <div class="certificate__item">
+                            <img src="img/js2.png" alt="JavaScript Essentials 2 Certificate (Cisco)"
+                                class="certificate__img">
+                            <p>JavaScript Essentials 2 Certificate (Cisco)</p>
+                        </div>
+                        <div class="certificate__item">
+                            <img src="img/chungchiNode.png" alt="Node.js Certificate (CyberSoft)"
+                                class="certificate__img">
+                            <p>Node.js Certificate (CyberSoft)</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
